@@ -17,10 +17,16 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=1080
-window/size/mode=4
-window/stretch/mode="canvas_items"
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/size/mode=3
+window/stretch/mode="viewport"
+
+[importer_defaults]
+
+animation_library={
+"gltf/embedded_image_handling": 3
+}
 
 [input]
 
@@ -67,3 +73,6 @@ interact={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=5
+textures/light_projectors/filter=5

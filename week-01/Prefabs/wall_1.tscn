@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0h2jrjbol7xs"]
+
+[ext_resource type="PackedScene" uid="uid://dckgat2yewsrn" path="res://Models/wall_1.glb" id="1_aicim"]
+
+[node name="wall_1" instance=ExtResource("1_aicim")]
+
+[node name="Wall" parent="." index="0"]
+gi_mode = 2

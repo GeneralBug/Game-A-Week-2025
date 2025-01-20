@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cb77ktqgej1dm"
+path="res://.godot/imported/light_switch_1_switch.png-7557052f78a4b1c5bc17d3cf0183416c.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "76c9fb0534df09672c394c057b542603"
+}
+
+[deps]
+
+source_file="res://Models/light_switch_1_switch.png"
+dest_files=["res://.godot/imported/light_switch_1_switch.png-7557052f78a4b1c5bc17d3cf0183416c.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=true
+compress/lossy_quality=0.7
+compress/hdr_compression=2
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=false
+process/premult_alpha=true
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
