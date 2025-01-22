@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp52upnuv8u8t"]
+
+[ext_resource type="PackedScene" uid="uid://de0dxb7sm17p" path="res://Models/door_1.glb" id="1_gixbc"]
+[ext_resource type="Script" path="res://Scripts/interactable_door.gd" id="1_q53u3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76yon"]
+size = Vector3(1.5, 3, 0.125)
+
+[node name="Door" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_q53u3")
+
+[node name="hinge_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="door_model" parent="hinge_pivot" instance=ExtResource("1_gixbc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.75, 0, 0)
+
+[node name="door_collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_76yon")

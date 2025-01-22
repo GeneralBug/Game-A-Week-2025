@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rrn45dah861w"
-path="res://.godot/imported/bookshelf_1_bookshelf.png-7bb7e1f64118439a205eec102e6ef5c1.ctex"
+uid="uid://trnhim4ut47j"
+path="res://.godot/imported/floor_1_floor.png-c3733ddd519ba77235a34283c4826ea1.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "a36a4afa2ed05a9a80976ec7ed63a14a"
+"md5": "dbb72ef602dab42e90881052fcb77ac6"
 }
 
 [deps]
 
-source_file="res://Models/bookshelf_1_bookshelf.png"
-dest_files=["res://.godot/imported/bookshelf_1_bookshelf.png-7bb7e1f64118439a205eec102e6ef5c1.ctex"]
+source_file="res://Textures/floor_1_floor.png"
+dest_files=["res://.godot/imported/floor_1_floor.png-c3733ddd519ba77235a34283c4826ea1.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=0
+compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

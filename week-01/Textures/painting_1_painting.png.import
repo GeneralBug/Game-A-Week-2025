@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd6wf5aaibxfg"
-path="res://.godot/imported/wall_1_wall.png-a898ff3cb8cab0ff7b6f05dbb780ead2.ctex"
+uid="uid://dwmqaaba0derd"
+path="res://.godot/imported/painting_1_painting.png-8e9e3d335ce1a91d5e0a425ed807adcc.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "7c5165bfbaa0f6436726e03e9f488def"
+"md5": "78b2ce06a69ae3fa74928fe67378c83d"
 }
 
 [deps]
 
-source_file="res://Models/wall_1_wall.png"
-dest_files=["res://.godot/imported/wall_1_wall.png-a898ff3cb8cab0ff7b6f05dbb780ead2.ctex"]
+source_file="res://Textures/painting_1_painting.png"
+dest_files=["res://.godot/imported/painting_1_painting.png-8e9e3d335ce1a91d5e0a425ed807adcc.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
-compress/hdr_compression=1
+compress/hdr_compression=2
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
@@ -29,7 +29,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

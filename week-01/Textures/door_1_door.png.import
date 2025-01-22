@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hh6f5feqk1o1"
-path.s3tc="res://.godot/imported/painting.png-43ee76af73fbebb2cf030928d45a3b06.s3tc.ctex"
+uid="uid://bqxg15ops3lqa"
+path="res://.godot/imported/door_1_door.png-3776d0353867d66f2a479eb83cfaab85.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "ebdb897c17c72ab146b89c4ce9a77e46"
 }
 
 [deps]
 
-source_file="res://Textures/painting.png"
-dest_files=["res://.godot/imported/painting.png-43ee76af73fbebb2cf030928d45a3b06.s3tc.ctex"]
+source_file="res://Textures/door_1_door.png"
+dest_files=["res://.godot/imported/door_1_door.png-3776d0353867d66f2a479eb83cfaab85.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

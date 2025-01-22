@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24bpsm72qdls"
-path="res://.godot/imported/switch.png-fd787602e9663057fbf07eb8354388dd.ctex"
+uid="uid://dd6wf5aaibxfg"
+path="res://.godot/imported/wall_1_wall.png-6d7e81e0a5411263478744567623404a.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "7c5165bfbaa0f6436726e03e9f488def"
 }
 
 [deps]
 
-source_file="res://Textures/switch.png"
-dest_files=["res://.godot/imported/switch.png-fd787602e9663057fbf07eb8354388dd.ctex"]
+source_file="res://Textures/wall_1_wall.png"
+dest_files=["res://.godot/imported/wall_1_wall.png-6d7e81e0a5411263478744567623404a.ctex"]
 
 [params]
 
@@ -31,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
