@@ -6,10 +6,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_76yon"]
 size = Vector3(1.5, 3, 0.125)
 
-[node name="Door" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 2
+[node name="Door" type="CharacterBody3D" node_paths=PackedStringArray("own_collider")]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_q53u3")
+own_collider = NodePath("door_collider")
 
 [node name="hinge_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)

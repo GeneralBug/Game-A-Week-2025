@@ -12,6 +12,9 @@ var t_bob = 0.0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var debug_camera = $"Head/DEBUG CAMERA"
+
+var init_velocity = true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -26,6 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event is InputEventKey and Input.is_action_pressed("ui_end"):
 		get_tree().quit()
+	
+	if event is InputEventKey and Input.is_action_pressed("debug"):
+		if camera.current:
+			debug_camera.current = true
+		else:
+			camera.current = true
 		
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -46,6 +55,9 @@ func _physics_process(delta: float) -> void:
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera.transform.origin = _headbob(t_bob)
 	
+	if init_velocity:
+		velocity.x = -1 * SPEED
+		init_velocity = false
 	move_and_slide()
 	
 func _headbob(time) -> Vector3:

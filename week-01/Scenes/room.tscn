@@ -1,16 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn5p5l3ddymkb"]
+[gd_scene load_steps=20 format=3 uid="uid://bn5p5l3ddymkb"]
 
 [ext_resource type="PackedScene" uid="uid://cqe8docy4as57" path="res://Scenes/interactable_switch.tscn" id="1_8v3wb"]
 [ext_resource type="PackedScene" uid="uid://cp52upnuv8u8t" path="res://Scenes/interactable_door.tscn" id="2_ec1s5"]
 [ext_resource type="PackedScene" uid="uid://fodclur6volp" path="res://Models/painting_1.glb" id="3_mfc4c"]
+[ext_resource type="PackedScene" uid="uid://njheuvmshhw7" path="res://Models/desk_2.glb" id="3_y805l"]
+[ext_resource type="PackedScene" uid="uid://j470l2w2ewtt" path="res://Models/pc_tower_1.glb" id="4_e25pb"]
+[ext_resource type="PackedScene" uid="uid://de0dxb7sm17p" path="res://Models/door_1.glb" id="4_li1gv"]
 [ext_resource type="PackedScene" uid="uid://d1u7w2bqgf0co" path="res://Models/bookshelf_1.glb" id="4_xeb40"]
+[ext_resource type="PackedScene" uid="uid://fnl6q121xmfi" path="res://Models/pc_monitor_1.glb" id="5_415cj"]
+[ext_resource type="Script" path="res://Scripts/one_way_collider.gd" id="5_pewy4"]
 [ext_resource type="PackedScene" uid="uid://bjd324jucei8e" path="res://Models/floor_1.glb" id="5_u3uq7"]
 [ext_resource type="PackedScene" uid="uid://dl35r6d7xpcja" path="res://Models/ceiling_1.glb" id="6_tplph"]
 [ext_resource type="PackedScene" uid="uid://b661c1ubvj1y5" path="res://Models/wall_2.glb" id="7_1d5pm"]
 [ext_resource type="PackedScene" uid="uid://dckgat2yewsrn" path="res://Models/wall_1.glb" id="8_ay6bc"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4de6"]
+size = Vector3(6, 2.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tq2wg"]
+size = Vector3(3, 6, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5b67"]
+size = Vector3(3, 6, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljf27"]
+size = Vector3(2, 8, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ukpk0"]
+size = Vector3(9, 0.1, 9)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qphs"]
-size = Vector3(16, 0.1, 16)
+size = Vector3(5, 0.1, 4.5)
 
 [node name="Room" type="Node3D"]
 
@@ -18,25 +38,34 @@ size = Vector3(16, 0.1, 16)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.995, 1.5, -1.25)
 light_source = NodePath("../ceiling_light_warm")
 
-[node name="Door_1" parent="." instance=ExtResource("2_ec1s5")]
+[node name="door_left" parent="." node_paths=PackedStringArray("pivot") instance=ExtResource("2_ec1s5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 openable = true
+pivot = NodePath("../left_pivot")
 
-[node name="Door_2" parent="." instance=ExtResource("2_ec1s5")]
+[node name="door_right" parent="." node_paths=PackedStringArray("pivot") instance=ExtResource("2_ec1s5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4)
 openable = true
+pivot = NodePath("../right_pivot")
 
-[node name="Door_entrance" parent="." instance=ExtResource("2_ec1s5")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 4, 0, 0)
+[node name="desk_2" parent="." instance=ExtResource("3_y805l")]
+transform = Transform3D(0.0467501, 0, 0.49781, 0, 0.5, 0, -0.49781, 0, 0.0467501, -1.57831, 0, -0.15)
 
-[node name="painting_1" parent="." instance=ExtResource("3_mfc4c")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.4, 2.5, -3.995)
+[node name="StaticBody3D" type="StaticBody3D" parent="desk_2"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1, 0)
 
-[node name="bookshelf_1" parent="." instance=ExtResource("4_xeb40")]
-transform = Transform3D(-1.5299e-08, 0, 0.35, 0, 0.35, 0, -0.35, 0, -1.5299e-08, -2.78227, 0, 3.535)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="desk_2/StaticBody3D"]
+transform = Transform3D(0.999992, 0, 3.05474e-07, 0, 1, 0, -3.05474e-07, 0, 0.999992, 0, 0, 0)
+shape = SubResource("BoxShape3D_l4de6")
 
-[node name="screen_light" type="SpotLight3D" parent="."]
-transform = Transform3D(0.0348995, 8.73695e-08, 0.999391, 0, -1, 8.74228e-08, 0.999391, -3.05101e-09, -0.0348995, 2.08373, 1.38381, 0)
+[node name="pc_tower_1" parent="desk_2" instance=ExtResource("4_e25pb")]
+transform = Transform3D(-0.0457728, -0.00190059, -0.748598, -0.000416117, 0.749997, -0.00187869, 0.748601, 0.000300683, -0.0457736, 2.125, 0.75, -0.025)
+
+[node name="pc_monitor_1" parent="desk_2" instance=ExtResource("5_415cj")]
+transform = Transform3D(-0.747723, 0, 0.0584006, 0, 0.75, 0, -0.0584006, 0, -0.747723, -0.0131486, 2.75945, -0.140011)
+
+[node name="screen_light" type="SpotLight3D" parent="desk_2/pc_monitor_1"]
+transform = Transform3D(2.65844, 2.32409e-07, 0.209224, 2.33127e-07, -2.66667, 0, 0.209224, 1.8291e-08, -2.65844, 0, 0, 0)
 light_color = Color(3.46541e-06, 0, 0.80283, 1)
 light_energy = 6.869
 light_indirect_energy = 16.0
@@ -44,28 +73,55 @@ light_specular = 1.215
 light_bake_mode = 0
 shadow_enabled = true
 shadow_blur = 10.0
-spot_range = 64.0
-spot_attenuation = -0.41
+spot_range = 35.544
+spot_attenuation = -0.11
+spot_angle = 66.82
+spot_angle_attenuation = 2.0
+
+[node name="door_entrance" parent="." node_paths=PackedStringArray("own_collider") instance=ExtResource("4_li1gv")]
+transform = Transform3D(5.96244e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.96244e-09, 4, 0, 0)
+script = ExtResource("5_pewy4")
+own_collider = NodePath("door_collider/CollisionShape3D")
+
+[node name="door_collider" type="StaticBody3D" parent="door_entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_entrance/door_collider"]
+shape = SubResource("BoxShape3D_tq2wg")
+
+[node name="door_area" type="Area3D" parent="door_entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_entrance/door_area"]
+shape = SubResource("BoxShape3D_h5b67")
+
+[node name="painting_1" parent="." instance=ExtResource("3_mfc4c")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.4, 2.5, -3.995)
+
+[node name="bookshelf_1" parent="." instance=ExtResource("4_xeb40")]
+transform = Transform3D(0.0107739, 0, 0.349834, 0, 0.35, 0, -0.349834, 0, 0.0107739, -2.78227, 0, 3.535)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bookshelf_1"]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bookshelf_1/StaticBody3D"]
+transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_ljf27")
 
 [node name="walls" type="Node3D" parent="."]
 
-[node name="ceiling_collider" type="StaticBody3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/ceiling_collider"]
-shape = SubResource("BoxShape3D_0qphs")
-
-[node name="floor_collider" type="StaticBody3D" parent="walls"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/floor_collider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-shape = SubResource("BoxShape3D_0qphs")
-
 [node name="floor_1" parent="walls" instance=ExtResource("5_u3uq7")]
-transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="floor_collider" type="StaticBody3D" parent="walls/floor_1"]
+transform = Transform3D(1.96078, 0, 0, 0, 1.96078, 0, 0, 0, 1.96078, 0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/floor_1/floor_collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_ukpk0")
 
 [node name="ceiling_1" parent="walls" instance=ExtResource("6_tplph")]
-transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 4, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4, 0)
 
 [node name="wall_1" parent="walls" instance=ExtResource("7_1d5pm")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -4)
@@ -74,27 +130,39 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -4)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall_1/wall_collider_1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.25, 0, 0)
+shape = SubResource("BoxShape3D_0qphs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="walls/wall_1/wall_collider_1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.25, 0, 0)
 shape = SubResource("BoxShape3D_0qphs")
 
 [node name="wall_2" parent="walls" instance=ExtResource("7_1d5pm")]
-transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 4)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 4)
 
 [node name="wall_collider_2" type="StaticBody3D" parent="walls/wall_2"]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 0, 4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall_2/wall_collider_2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.25, 0, 0)
+shape = SubResource("BoxShape3D_0qphs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="walls/wall_2/wall_collider_2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.25, 0, 0)
 shape = SubResource("BoxShape3D_0qphs")
 
 [node name="wall_3" parent="walls" instance=ExtResource("7_1d5pm")]
-transform = Transform3D(5.96244e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.96244e-09, 4, 0, 0)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 4, 0, 0)
 
 [node name="wall_collider_3" type="StaticBody3D" parent="walls/wall_3"]
 transform = Transform3D(2.38498e-08, 0, 2, 0, 2, 0, -2, 0, 2.38498e-08, 0, 4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall_3/wall_collider_3"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -3)
+shape = SubResource("BoxShape3D_0qphs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="walls/wall_3/wall_collider_3"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 3)
 shape = SubResource("BoxShape3D_0qphs")
 
 [node name="wall_4" parent="walls" instance=ExtResource("8_ay6bc")]
@@ -104,11 +172,16 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/wall_4/wall_collider_4"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -2.25)
+shape = SubResource("BoxShape3D_0qphs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="walls/wall_4/wall_collider_4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 2.25)
 shape = SubResource("BoxShape3D_0qphs")
 
 [node name="ceiling_light_warm" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.46995, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 3.45, 0)
+visible = false
 light_color = Color(1, 0.835537, 0.304272, 1)
 light_energy = 5.0
 shadow_enabled = true
@@ -125,3 +198,11 @@ shadow_enabled = true
 shadow_blur = 0.0
 omni_range = 256.0
 omni_attenuation = 0.2
+
+[node name="right_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="left_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[connection signal="body_exited" from="door_entrance/door_area" to="door_entrance" method="_on_door_area_body_exited"]
