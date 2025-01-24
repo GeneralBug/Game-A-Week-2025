@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmotuyje66ykf"]
+[gd_scene load_steps=10 format=3 uid="uid://cmotuyje66ykf"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_kl3ms"]
 [ext_resource type="Script" path="res://Scripts/scene_controller.gd" id="1_ufsgb"]
 [ext_resource type="PackedScene" uid="uid://b2o7d12icfrlu" path="res://Scenes/interact_ray.tscn" id="4_cenum"]
 [ext_resource type="Script" path="res://Scripts/debug_camera.gd" id="4_doslq"]
 [ext_resource type="PackedScene" uid="uid://bn5p5l3ddymkb" path="res://Scenes/room.tscn" id="4_gocim"]
+[ext_resource type="Script" path="res://Scripts/fade_in.gd" id="6_1f03f"]
 
 [sub_resource type="Environment" id="Environment_qmblh"]
 ambient_light_source = 2
@@ -64,3 +65,23 @@ script = ExtResource("4_doslq")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.1519, 0)
 visible = false
+
+[node name="fade" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("6_1f03f")
+
+[node name="ColorRect" type="ColorRect" parent="fade"]
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

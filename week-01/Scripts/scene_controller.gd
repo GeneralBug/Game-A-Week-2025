@@ -9,6 +9,8 @@ var modify_z = true
 
 const DOOR_POS = [Vector3(0,0,-4),]
 
+
+
 func build_room(pivot: Node3D):
 	#todo: create a new room with correct position and location, delete room before last, set screen words from list, increment count
 	count += 1
