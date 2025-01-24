@@ -10,17 +10,19 @@ config_version=5
 
 [application]
 
-config/name="Week 01"
+config/name="Woah, What a Peculiar Room! I Sure Hope Nothing Spooky Happens"
+config/description="Game-A-Week 2025 week 1"
+config/version="0.1"
 run/main_scene="res://Scenes/testing.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=30
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/mode=3
+window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
