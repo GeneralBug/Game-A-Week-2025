@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc5myxc33n8io"]
+
+[ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://Scenes/player.tscn" id="1_a05jj"]
+[ext_resource type="PackedScene" uid="uid://d14upw11683j7" path="res://Scenes/fade in.tscn" id="2_i2rtg"]
+
+[node name="cool map" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a05jj")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(19.934, 0.045, 12.94)
+
+[node name="fade" parent="." instance=ExtResource("2_i2rtg")]
