@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjtwcmv5njfle"]
+
+[ext_resource type="Script" path="res://Scripts/interactable_coin.gd" id="1_abtw1"]
+[ext_resource type="PackedScene" uid="uid://b6xpcvkbwl6da" path="res://Models/coin_1.glb" id="2_pqqbh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qob3j"]
+
+[node name="coin_$1" type="StaticBody3D"]
+script = ExtResource("1_abtw1")
+
+[node name="coin_1" parent="." instance=ExtResource("2_pqqbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179379, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qob3j")

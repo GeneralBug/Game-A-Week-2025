@@ -1,9 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc5myxc33n8io"]
+[gd_scene load_steps=7 format=3 uid="uid://bc5myxc33n8io"]
 
 [ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://Scenes/player.tscn" id="1_a05jj"]
 [ext_resource type="PackedScene" uid="uid://d14upw11683j7" path="res://Scenes/fade in.tscn" id="2_i2rtg"]
+[ext_resource type="PackedScene" uid="uid://cjtwcmv5njfle" path="res://Scenes/coin.tscn" id="3_ajy6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7i76y"]
+sky_top_color = Color(0.432179, 0.571581, 0.701921, 1)
+sky_horizon_color = Color(0.658045, 0.685145, 0.70873, 1)
+ground_horizon_color = Color(0.658045, 0.685145, 0.70873, 1)
+
+[sub_resource type="Sky" id="Sky_l4117"]
+sky_material = SubResource("ProceduralSkyMaterial_7i76y")
+
+[sub_resource type="Environment" id="Environment_dvs48"]
+background_mode = 2
+sky = SubResource("Sky_l4117")
+tonemap_mode = 2
 
 [node name="cool map" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dvs48")
 
 [node name="Player" parent="." instance=ExtResource("1_a05jj")]
 
@@ -12,3 +33,5 @@ use_collision = true
 size = Vector3(19.934, 0.045, 12.94)
 
 [node name="fade" parent="." instance=ExtResource("2_i2rtg")]
+
+[node name="coin_$1" parent="." instance=ExtResource("3_ajy6t")]

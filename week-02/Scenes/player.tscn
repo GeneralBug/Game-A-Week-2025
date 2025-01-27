@@ -28,6 +28,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.1
 fov = 60.0
 
 [node name="InteractRay" parent="Head/Camera3D" instance=ExtResource("2_v3s31")]
+target_position = Vector3(0, 0, -4)
 
 [node name="DEBUG CAMERA" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 20, 0)
