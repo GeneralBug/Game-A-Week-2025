@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc5myxc33n8io"]
+[gd_scene load_steps=8 format=3 uid="uid://bc5myxc33n8io"]
 
 [ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://Scenes/player.tscn" id="1_a05jj"]
 [ext_resource type="PackedScene" uid="uid://d14upw11683j7" path="res://Scenes/fade in.tscn" id="2_i2rtg"]
 [ext_resource type="PackedScene" uid="uid://cjtwcmv5njfle" path="res://Scenes/coin.tscn" id="3_ajy6t"]
+[ext_resource type="Script" path="res://Scenes/coin_controller.gd" id="4_eyoko"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7i76y"]
 sky_top_color = Color(0.432179, 0.571581, 0.701921, 1)
@@ -35,3 +36,8 @@ size = Vector3(19.934, 0.045, 12.94)
 [node name="fade" parent="." instance=ExtResource("2_i2rtg")]
 
 [node name="coin_$1" parent="." instance=ExtResource("3_ajy6t")]
+
+[node name="Coin Controller" type="Node" parent="."]
+script = ExtResource("4_eyoko")
+target_value = 500
+spawn_range = Array[Vector2]([Vector2(0, 0), Vector2(10, 10)])
