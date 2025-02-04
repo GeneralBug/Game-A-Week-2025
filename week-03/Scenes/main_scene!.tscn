@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5v2siqgth08n"]
+[gd_scene load_steps=9 format=3 uid="uid://c5v2siqgth08n"]
 
 [ext_resource type="PackedScene" uid="uid://dltul14otuaoh" path="res://Scenes/player.tscn" id="1_jmpek"]
+[ext_resource type="PackedScene" uid="uid://cjoy1wfm5pj84" path="res://Scenes/water.tscn" id="2_btcj4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qms8"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.161906, 0.703944, 0.922191, 1)
+sky_horizon_color = Color(0.670588, 0.768627, 0.882353, 1)
+ground_bottom_color = Color(0.000757193, 0.448152, 0.722808, 1)
+ground_horizon_color = Color(0.669386, 0.767616, 0.880778, 1)
 
 [sub_resource type="Sky" id="Sky_f37td"]
 sky_material = SubResource("ProceduralSkyMaterial_6qms8")
@@ -13,8 +16,20 @@ sky_material = SubResource("ProceduralSkyMaterial_6qms8")
 background_mode = 2
 sky = SubResource("Sky_f37td")
 tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_density = 0.1
+fog_height_density = -0.2
+volumetric_fog_density = 0.4421
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t5q8t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s57bs"]
+albedo_color = Color(0.0128579, 0.0665156, 0.227305, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b8wyx"]
+material = SubResource("StandardMaterial3D_s57bs")
+size = Vector2(500, 500)
 
 [node name="Node3D" type="Node3D"]
 
@@ -22,7 +37,8 @@ tonemap_mode = 2
 environment = SubResource("Environment_2lrhx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.972775, 0.2007, -0.115874, 0, 0.5, 0.866026, 0.231748, 0.842448, -0.486388, 0, 0, 0)
+light_energy = 1.646
 shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
@@ -32,8 +48,17 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CapsuleShape3D_t5q8t")
 
 [node name="Player" parent="." instance=ExtResource("1_jmpek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84513, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.75494, 0)
+visible = false
 use_collision = true
 size = Vector3(26.9338, 1, 35.1233)
+
+[node name="Water" parent="." instance=ExtResource("2_btcj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0427871, 0, 0)
+
+[node name="Sea Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+mesh = SubResource("PlaneMesh_b8wyx")
