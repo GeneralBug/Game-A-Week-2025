@@ -1,4 +1,4 @@
-// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+// based on https://www.seacreaturegame.com/blog/gerstner-waves-with-buoyancy-godot
 
 shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_toon;
@@ -34,11 +34,12 @@ uniform vec3 wave_b = vec3(1.0, 0.25, 20.0);
 uniform vec2 wave_b_dir = vec2(1.0, 1.0);
 uniform vec3 wave_c = vec3(1.0, 0.15, 1.0);
 uniform vec2 wave_c_dir = vec2(1.0, 0.5);
-const float height_scale = 1.5;
-const float frequency_scale = 0.8;
+const float height_scale = 1.0;
+const float frequency_scale = 1.0;
 varying vec3 v_normal;
 varying float wave_height;
 
+uniform float wave_time;
 //wave stuff
 vec3 gerstnerWave(vec3 wave, vec2 wave_dir, vec3 p, float t) 
 {
@@ -48,7 +49,7 @@ vec3 gerstnerWave(vec3 wave, vec2 wave_dir, vec3 p, float t)
     float k = (2.0 * PI / wavelength);
     float c = sqrt(9.8 / k);
     vec2 d = normalize(wave_dir);
-    float f = k * (dot(d, p.xz) - (c * t)) * frequency_scale;
+    float f = k * (dot(d, p.xz) - (c * t));
     float a = (steepness / k);
     return vec3(d.x * (a * cos(f)), amplitude * a * sin(f), d.y * (a * cos(f)));
 }
@@ -61,7 +62,7 @@ void computeGerstnerNormal(in vec3 wave, in vec2 wave_dir, in vec3 p, float t, i
     float k = 2.0 * PI / wavelength;
     float c = sqrt(9.8 / k);
     vec2 d = normalize(wave_dir);
-    float f = k * (dot(d, p.xz) - (c * t)) * frequency_scale;
+    float f = k * (dot(d, p.xz) - (c * t));
     float a = steepness / k;
     tangent += normalize(vec3(1.0 - d.x * d.x * steepness * sin(f), d.x * steepness * cos(f), -d.x * d.y * (steepness * sin(f))));
     binormal += normalize(vec3(-d.x * d.y * (steepness * sin(f)), d.y * steepness * cos(f), 1.0 - (d.y * d.y * steepness * sin(f))));
@@ -82,14 +83,14 @@ void vertex() {
     vec3 tangent = vec3(1.0, 0.0, 0.0);
     vec3 binormal = vec3(0.0, 0.0, 1.0);
 
-    displacement += gerstnerWave(wave_a, wave_a_dir, original_p, TIME / 2.0);
-    computeGerstnerNormal(wave_a, wave_a_dir, original_p, TIME / 2.0, tangent, binormal);
+    displacement += gerstnerWave(wave_a, wave_a_dir, original_p, (wave_time / 2.0));
+    computeGerstnerNormal(wave_a, wave_a_dir, original_p, (wave_time / 2.0), tangent, binormal);
     
-    displacement += gerstnerWave(wave_b, wave_b_dir, original_p, TIME / 2.0);
-    computeGerstnerNormal(wave_b, wave_b_dir, original_p, TIME / 2.0, tangent, binormal);
+    displacement += gerstnerWave(wave_b, wave_b_dir, original_p, (wave_time / 2.0));
+    computeGerstnerNormal(wave_b, wave_b_dir, original_p, (wave_time / 2.0), tangent, binormal);
     
-    displacement += gerstnerWave(wave_c, wave_c_dir, original_p, TIME / 2.0);
-    computeGerstnerNormal(wave_c, wave_c_dir, original_p, TIME / 2.0, tangent, binormal);
+    displacement += gerstnerWave(wave_c, wave_c_dir, original_p, (wave_time / 2.0));
+    computeGerstnerNormal(wave_c, wave_c_dir, original_p, (wave_time / 2.0), tangent, binormal);
 
     VERTEX.y += height_scale * displacement.y;
     vec3 normal = normalize(cross(binormal, tangent));
