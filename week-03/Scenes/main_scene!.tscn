@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5v2siqgth08n"]
+[gd_scene load_steps=8 format=3 uid="uid://c5v2siqgth08n"]
 
 [ext_resource type="PackedScene" uid="uid://dltul14otuaoh" path="res://Scenes/player.tscn" id="1_jmpek"]
 [ext_resource type="PackedScene" uid="uid://cjoy1wfm5pj84" path="res://Scenes/water.tscn" id="2_btcj4"]
@@ -23,6 +23,9 @@ fog_density = 1.0
 fog_height_density = -0.2
 volumetric_fog_density = 0.4421
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ue0ci"]
+size = Vector3(500, 200, 20)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -35,9 +38,10 @@ shadow_enabled = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("water_plane") instance=ExtResource("1_jmpek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.039, 1.9, 0)
-speed = 100.0
+lock_rotation = false
+speed = 1000.0
+sensitivity = 5.0
 water_plane = NodePath("../Water")
-water_drag = 0.5
 
 [node name="Buoy" parent="." node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
 water_plane = NodePath("../Water")
@@ -48,3 +52,22 @@ visible = false
 size = Vector3(91.6045, 1, 41.0039)
 
 [node name="Water" parent="." instance=ExtResource("2_btcj4")]
+
+[node name="outer walls" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="outer walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 250, 0, 0)
+shape = SubResource("BoxShape3D_ue0ci")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="outer walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 250)
+shape = SubResource("BoxShape3D_ue0ci")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="outer walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250)
+shape = SubResource("BoxShape3D_ue0ci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="outer walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250, 0, 0)
+shape = SubResource("BoxShape3D_ue0ci")

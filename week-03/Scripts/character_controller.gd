@@ -35,6 +35,8 @@ var submerged := false
 @export var water_drag := 0.05
 @export var water_angular_drag := 0.05
 
+var mouse_pos: Vector2
+
 func _unhandled_input(event: InputEvent) -> void:
 	# Camera rotation
 	#if event is InputEventMouse:
@@ -50,16 +52,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.current = true
 		
 func _physics_process(delta: float) -> void:
-	
-	var mouse_pos = get_viewport().get_mouse_position()
-
-	turn_speed = (mouse_pos.x - (X_SCALE))/X_SCALE
-	throttle = -1 * (mouse_pos.y - (Y_SCALE))/Y_SCALE
-	
-	self.rotate_y((speed * sensitivity) * turn_speed)
-	var direction: Vector3 = (self.transform.basis * Vector3(throttle, 0, 0)).normalized()
-	#print(throttle, ", ", turn_speed)
-	buoyant_object.apply_force(direction * speed)
 
 	# buoyancy stuff
 	time += delta
@@ -77,8 +69,8 @@ func _physics_process(delta: float) -> void:
 			buoyant_object.apply_force(Vector3.UP * depth)
 			print("NOT submerged!")
 	
-	self.rotation.x = clampf(self.rotation.x, deg_to_rad(-10), deg_to_rad(10))
-	self.rotation.z = clampf(self.rotation.z, deg_to_rad(-20), deg_to_rad(20))
+	buoyant_object.rotation.x = clampf(buoyant_object.rotation.x, deg_to_rad(-10), deg_to_rad(10))
+	buoyant_object.rotation.z = 0
 	
 func _ready():
 	update_wave_parameters()
@@ -122,6 +114,16 @@ func update_probes():
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D):
+	mouse_pos = get_viewport().get_mouse_position()
+	turn_speed = (mouse_pos.x - (X_SCALE))/X_SCALE
+	buoyant_object.rotation_degrees += Vector3(0, (turn_speed * sensitivity), 0)
+	throttle = -1 * (mouse_pos.y - (Y_SCALE))/Y_SCALE
+	if Input.is_action_pressed("interact"):
+		var direction: Vector3 = (self.transform.basis * Vector3(throttle, 0, 0)).normalized()
+		#print(throttle, ", ", turn_speed)
+		buoyant_object.apply_force(direction * speed)
+
+	
 	if submerged:
 		state.linear_velocity *=  1 - water_drag
 		state.angular_velocity *= 1 - water_angular_drag 

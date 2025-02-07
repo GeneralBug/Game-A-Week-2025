@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://gw1qcnnekpl"]
+[gd_scene load_steps=4 format=3 uid="uid://chqqaaqplj3t8"]
 
-[ext_resource type="Texture2D" uid="uid://doludg7d7kc1" path="res://Textures/red buoy.png" id="1_sypfi"]
-[ext_resource type="Script" path="res://Scripts/buoyant_object.gd" id="2_03uie"]
+[ext_resource type="Script" path="res://Scripts/buoyant_object.gd" id="1_rigli"]
+[ext_resource type="Texture2D" uid="uid://clptcg68l7yg1" path="res://Textures/yellow buoy.png" id="2_3616k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nrbo1"]
 
@@ -10,7 +10,7 @@ collision_layer = 2
 collision_mask = 2
 gravity_scale = 2.0
 lock_rotation = true
-script = ExtResource("2_03uie")
+script = ExtResource("1_rigli")
 float_force = 10.0
 water_drag = 0.01
 
@@ -22,7 +22,7 @@ pixel_size = 0.1
 billboard = 1
 double_sided = false
 texture_filter = 0
-texture = ExtResource("1_sypfi")
+texture = ExtResource("2_3616k")
 
 [node name="ProbeContainer" type="Node3D" parent="."]
 
