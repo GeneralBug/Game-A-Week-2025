@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5v2siqgth08n"]
+[gd_scene load_steps=10 format=3 uid="uid://c5v2siqgth08n"]
 
 [ext_resource type="PackedScene" uid="uid://dltul14otuaoh" path="res://Scenes/player.tscn" id="1_jmpek"]
 [ext_resource type="PackedScene" uid="uid://cjoy1wfm5pj84" path="res://Scenes/water.tscn" id="2_btcj4"]
+[ext_resource type="PackedScene" uid="uid://chqqaaqplj3t8" path="res://Scenes/buoy2.tscn" id="3_84u0a"]
 [ext_resource type="PackedScene" uid="uid://gw1qcnnekpl" path="res://Scenes/buoy.tscn" id="3_aydjf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qms8"]
@@ -23,6 +24,9 @@ fog_density = 1.0
 fog_height_density = -0.2
 volumetric_fog_density = 0.4421
 
+[sub_resource type="SphereMesh" id="SphereMesh_7t8ap"]
+radius = 50.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ue0ci"]
 size = Vector3(500, 200, 20)
 
@@ -41,15 +45,127 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.039, 1.9, 0)
 lock_rotation = false
 speed = 1000.0
 sensitivity = 5.0
+float_force = 10.0
 water_plane = NodePath("../Water")
 
-[node name="Buoy" parent="." node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
-water_plane = NodePath("../Water")
+[node name="BuoyContainer" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+[node name="guide" type="MeshInstance3D" parent="BuoyContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17557, 0)
 visible = false
-size = Vector3(91.6045, 1, 41.0039)
+mesh = SubResource("SphereMesh_7t8ap")
+
+[node name="red" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+water_plane = NodePath("../../Water")
+
+[node name="yellow" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -43)
+water_plane = NodePath("../../Water")
+
+[node name="red2" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+water_plane = NodePath("../../Water")
+
+[node name="red3" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+water_plane = NodePath("../../Water")
+
+[node name="red4" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+water_plane = NodePath("../../Water")
+
+[node name="yellow2" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -49)
+water_plane = NodePath("../../Water")
+
+[node name="yellow3" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 49)
+water_plane = NodePath("../../Water")
+
+[node name="yellow4" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -49)
+water_plane = NodePath("../../Water")
+
+[node name="yellow5" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 49)
+water_plane = NodePath("../../Water")
+
+[node name="yellow6" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, 7.5)
+water_plane = NodePath("../../Water")
+
+[node name="yellow7" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -7.5)
+water_plane = NodePath("../../Water")
+
+[node name="yellow8" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 7.5)
+water_plane = NodePath("../../Water")
+
+[node name="yellow9" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -7.5)
+water_plane = NodePath("../../Water")
+
+[node name="red5" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -47)
+water_plane = NodePath("../../Water")
+
+[node name="red6" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 47)
+water_plane = NodePath("../../Water")
+
+[node name="red7" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 47)
+water_plane = NodePath("../../Water")
+
+[node name="red8" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -47)
+water_plane = NodePath("../../Water")
+
+[node name="red9" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, 16)
+water_plane = NodePath("../../Water")
+
+[node name="red10" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, -16)
+water_plane = NodePath("../../Water")
+
+[node name="red11" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, 16)
+water_plane = NodePath("../../Water")
+
+[node name="red12" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_aydjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0, -16)
+water_plane = NodePath("../../Water")
+
+[node name="yellow10" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 43)
+water_plane = NodePath("../../Water")
+
+[node name="yellow11" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -43)
+water_plane = NodePath("../../Water")
+
+[node name="yellow12" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 43)
+water_plane = NodePath("../../Water")
+
+[node name="yellow13" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 24)
+water_plane = NodePath("../../Water")
+
+[node name="yellow14" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -24)
+water_plane = NodePath("../../Water")
+
+[node name="yellow15" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 24)
+water_plane = NodePath("../../Water")
+
+[node name="yellow16" parent="BuoyContainer" node_paths=PackedStringArray("water_plane") instance=ExtResource("3_84u0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, -24)
+water_plane = NodePath("../../Water")
 
 [node name="Water" parent="." instance=ExtResource("2_btcj4")]
 
