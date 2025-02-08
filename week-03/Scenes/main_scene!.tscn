@@ -41,7 +41,7 @@ light_energy = 1.646
 shadow_enabled = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("water_plane") instance=ExtResource("1_jmpek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.039, 1.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.281, 0.462273, -21.519)
 lock_rotation = false
 speed = 1000.0
 sensitivity = 5.0
