@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Week 3"
+config/name="Sailing around at the speed of sound; look at 'em go!"
 config/description="Game-A-Week 2025 week 3"
 config/version="0.1"
 run/main_scene="res://Scenes/main_scene!.tscn"
@@ -24,7 +24,6 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/mode=3
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
 [importer_defaults]
