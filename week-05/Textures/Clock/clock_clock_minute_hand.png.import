@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsidf1jlwua3r"
+uid="uid://cv7yv7kvqoa4s"
 path="res://.godot/imported/clock_clock_minute_hand.png-1163ece2e9f8e8dc79fa64b8bb38c570.ctex"
 metadata={
 "vram_texture": false
@@ -24,7 +24,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

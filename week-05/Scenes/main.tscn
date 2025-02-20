@@ -1,13 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjuhsdj21sv2b"]
+[gd_scene load_steps=39 format=3 uid="uid://bjuhsdj21sv2b"]
 
 [ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://FP Controller/Scenes/player.tscn" id="1_l23db"]
+[ext_resource type="Script" path="res://Scenes/scene_controller.gd" id="1_vddx5"]
 [ext_resource type="PackedScene" uid="uid://ca7grud4ovj1m" path="res://Scenes/clock.tscn" id="2_ubbes"]
-[ext_resource type="Material" uid="uid://b2yhhpub6knwr" path="res://Shaders/water_1.tres" id="3_38g4c"]
 [ext_resource type="Material" uid="uid://cxyyskgvxeoxr" path="res://Shaders/water_2.tres" id="4_d5xeo"]
+[ext_resource type="Shader" path="res://Shaders/water_1.gdshader" id="5_w37ue"]
+[ext_resource type="PackedScene" uid="uid://cu0p4i5e5otb2" path="res://Scenes/sun.tscn" id="6_mkyvh"]
+[ext_resource type="PackedScene" uid="uid://drof2nbx70xtm" path="res://Scenes/moon.tscn" id="7_pr2lp"]
+[ext_resource type="PackedScene" uid="uid://exd7fqtbivuo" path="res://Scenes/gate.tscn" id="8_rc40s"]
+[ext_resource type="PackedScene" uid="uid://c0mju8lnq0oh4" path="res://Scenes/lamp.tscn" id="9_ckr81"]
+[ext_resource type="PackedScene" uid="uid://bi7xu0mjwvquj" path="res://Models/clock_tower.glb" id="10_5cgrk"]
+[ext_resource type="PackedScene" uid="uid://0f3hjsiaso54" path="res://Models/plaque.glb" id="12_anahd"]
+[ext_resource type="PackedScene" uid="uid://d4hcnmn46vtic" path="res://Scenes/doorway.tscn" id="12_knjh4"]
+[ext_resource type="Texture2D" uid="uid://dxkqb541xhvmb" path="res://Textures/plaque_moon_moon.png" id="13_gmdxu"]
+[ext_resource type="PackedScene" uid="uid://d1b3ybfmk60jf" path="res://Scenes/wall.tscn" id="13_pc8p0"]
+[ext_resource type="Texture2D" uid="uid://bb3jn7gkkl617" path="res://Textures/plaque_sun_sun.png" id="15_4c04r"]
+[ext_resource type="Texture2D" uid="uid://j3nodsf3du7j" path="res://Textures/plaque_twilight_twilight.png" id="16_rjqcy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tdjdg"]
+sky_top_color = Color(0.263891, 0.453399, 0.70131, 1)
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.2, 0.239216, 0.133333, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_vkkyt"]
 sky_material = SubResource("ProceduralSkyMaterial_tdjdg")
@@ -15,31 +30,681 @@ sky_material = SubResource("ProceduralSkyMaterial_tdjdg")
 [sub_resource type="Environment" id="Environment_p6f65"]
 background_mode = 2
 sky = SubResource("Sky_vkkyt")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.380392, 0.796078, 1)
+reflected_light_source = 2
 tonemap_mode = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0ea4v"]
-lightmap_size_hint = Vector2i(510, 510)
-material = ExtResource("3_38g4c")
-add_uv2 = true
-uv2_padding = 10.0
+[sub_resource type="PlaneMesh" id="PlaneMesh_b4wa1"]
+material = ExtResource("4_d5xeo")
+uv2_padding = 0.0
 size = Vector2(100, 100)
 subdivide_width = 1
 subdivide_depth = 1
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_b4wa1"]
-lightmap_size_hint = Vector2i(510, 510)
-material = ExtResource("4_d5xeo")
-add_uv2 = true
-uv2_padding = 10.0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mpk1v"]
+load_path = "res://.godot/imported/green_water.png-aeb14e33954a39b5333a7a10e23a6bcb.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqgdj"]
+render_priority = 0
+shader = ExtResource("5_w37ue")
+shader_parameter/albedo = Color(0.3003, 0.574665, 0.91, 0.623529)
+shader_parameter/point_size = 0.1
+shader_parameter/roughness = 0.375
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.25
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(1, 1, 1, 0)
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv2_blend_sharpness = 8.543
+shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_mpk1v")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0ea4v"]
+material = SubResource("ShaderMaterial_cqgdj")
 size = Vector2(100, 100)
 subdivide_width = 1
 subdivide_depth = 1
+
+[sub_resource type="Animation" id="Animation_2g2hl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sky/light_sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0.698132, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sky/light_sun:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sky/light_moon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0.698132, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sky/light_moon:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.263891, 0.453399, 0.70131, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.64625, 0.65575, 0.67075, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.64625, 0.65575, 0.67075, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2, 0.239216, 0.133333, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.380392, 0.796078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u38b3"]
+resource_name = "sky animation"
+length = 24.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sky/light_sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0.698132, 0), Vector3(7.85398, 0.698132, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sky/light_sun:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6, 12, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sky/light_moon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0.698132, 0), Vector3(4.71239, 0.698132, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sky/light_moon:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5, 6, 18, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.2, 0.0, 0.0, 0.2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5, 6, 9, 15, 18, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0705882, 0.054902, 0.172549, 1), Color(0.278431, 0.219608, 0.313726, 1), Color(0.262745, 0.454902, 0.701961, 1), Color(0.262745, 0.454902, 0.701961, 1), Color(0.278431, 0.219608, 0.313726, 1), Color(0.0705882, 0.054902, 0.172549, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.5, 6, 7.5, 16.5, 18, 19.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0.0627451, 1), Color(0.854902, 0.592157, 0.32549, 1), Color(0.647059, 0.654902, 0.670588, 1), Color(0.64625, 0.65575, 0.67075, 1), Color(0.854712, 0.590815, 0.325159, 1), Color(0, 0, 0.0627451, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.5, 6, 7.5, 16.5, 18, 19.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.854902, 0.592157, 0.32549, 1), Color(0.647059, 0.654902, 0.670588, 1), Color(0.64625, 0.65575, 0.67075, 1), Color(0.854902, 0.592157, 0.32549, 1), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.5, 9, 15, 19.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0314315, 0.0442849, 0.0150079, 1), Color(0.2, 0.239216, 0.133333, 1), Color(0.2, 0.239216, 0.133333, 1), Color(0.0314315, 0.0442849, 0.0150079, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_curve")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6, 7.5, 16.5, 18, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.05, 0.5, 0.15, 0.15, 0.5, 0.05]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 5, 6, 7.5, 16.5, 18, 19, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.270588, 0.580392, 1), Color(0, 0.270588, 0.580392, 1), Color(0.854902, 0.592157, 0.32549, 1), Color(0.647059, 0.654902, 0.670588, 1), Color(0.647059, 0.654902, 0.670588, 1), Color(0.854902, 0.592157, 0.32549, 1), Color(0, 0.270588, 0.580392, 1), Color(0, 0.270133, 0.580554, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73wrp"]
+_data = {
+"RESET": SubResource("Animation_2g2hl"),
+"sky animation": SubResource("Animation_u38b3")
+}
+
+[sub_resource type="Animation" id="Animation_sm5i1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("props/gate_day:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("props/lamp:lit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("props/lamp2:lit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("props/lamp3:lit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("props/lamp4:lit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("props/lamp5:lit")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("props/lamp6:lit")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("props/lamp7:lit")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("props/gate_night:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.74533, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("props/gate_twilight:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nvtim"]
+resource_name = "prop animation"
+length = 24.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("props/gate_day:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.5, 6.6, 17.5, 17.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.74533, 0), Vector3(0, 1.74533, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("props/lamp:lit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("props/lamp2:lit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("props/lamp3:lit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("props/lamp4:lit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("props/lamp5:lit")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("props/lamp6:lit")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("props/lamp7:lit")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("props/gate_night:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 5.5, 5.6, 18.5, 18.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.74533, 0), Vector3(0, 1.74533, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.74533, 0), Vector3(0, 1.74533, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("props/gate_twilight:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 5.5, 5.6, 6.5, 6.6, 17.5, 17.6, 18.5, 18.6, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.74533, 0), Vector3(0, 1.74533, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.74533, 0), Vector3(0, 1.74533, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2uj26"]
+_data = {
+"RESET": SubResource("Animation_sm5i1"),
+"prop animation": SubResource("Animation_nvtim")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w8ru"]
+resource_name = "Material.002"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.775063, 0.775063, 0.775063, 1)
+albedo_texture = ExtResource("13_gmdxu")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_exhr7"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_visdu"]
+resource_name = "plaque_moon_Plane_003"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_8w8ru"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_exhr7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4omjd"]
+resource_name = "Material.002"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.776471, 0.776471, 0.776471, 1)
+albedo_texture = ExtResource("15_4c04r")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jxltx"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yx8r6"]
+resource_name = "plaque_sun_Plane_003"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_4omjd"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jxltx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me4qf"]
+resource_name = "Material.002"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.776471, 0.776471, 0.776471, 1)
+albedo_texture = ExtResource("16_rjqcy")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qjlls"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1okoh"]
+resource_name = "plaque_twilight_Plane_003"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_me4qf"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qjlls")
 
 [node name="main" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+[node name="SceneController" type="Node" parent="." node_paths=PackedStringArray("sky_animator", "prop_animator")]
+script = ExtResource("1_vddx5")
+sky_animator = NodePath("../sky")
+prop_animator = NodePath("../props")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p6f65")
@@ -47,16 +712,164 @@ environment = SubResource("Environment_p6f65")
 [node name="Player" parent="." instance=ExtResource("1_l23db")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.299551, -0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.676, -0.25, -0.05)
 use_collision = true
-size = Vector3(14.832, 0.366211, 12.762)
+size = Vector3(43.3589, 0.366211, 86.249)
 
-[node name="Clock" parent="." instance=ExtResource("2_ubbes")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.26963, 0)
+[node name="water2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_b4wa1")
 
 [node name="water" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_0ea4v")
 
-[node name="water2" type="MeshInstance3D" parent="water"]
-mesh = SubResource("PlaneMesh_b4wa1")
-skeleton = NodePath("../..")
+[node name="sky" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_73wrp")
+}
+movie_quit_on_finish = true
+
+[node name="light_sun" type="DirectionalLight3D" parent="sky"]
+transform = Transform3D(0.766044, -0.642788, -2.32689e-06, 0, -3.61999e-06, 1, -0.642788, -0.766044, -2.77307e-06, -1, 10, 0)
+light_energy = 0.0
+
+[node name="sun2" parent="sky/light_sun" instance=ExtResource("6_mkyvh")]
+transform = Transform3D(7.5, -1.45519e-12, 6.36084e-20, 0, -3.27835e-07, -7.5, 1.45519e-12, 7.5, -3.27835e-07, 0, 0, 100)
+
+[node name="light_moon" type="DirectionalLight3D" parent="sky"]
+transform = Transform3D(0.766044, 0.642788, -2.32689e-06, 0, -3.61999e-06, -1, -0.642788, 0.766044, -2.77307e-06, 1, 10, 0)
+light_color = Color(0, 0, 0.243137, 1)
+light_energy = 0.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_opacity = 0.5
+
+[node name="moon2" parent="sky/light_moon" instance=ExtResource("7_pr2lp")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 100)
+
+[node name="props" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2uj26")
+}
+
+[node name="gate_day" parent="props" instance=ExtResource("8_rc40s")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.75, 0, -10)
+
+[node name="gate_night" parent="props" instance=ExtResource("8_rc40s")]
+transform = Transform3D(-0.130236, 0, 0.738606, 0, 0.75, 0, -0.738606, 0, -0.130236, 8.99978, 0, 0)
+
+[node name="gate_twilight" parent="props" instance=ExtResource("8_rc40s")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 11.9998, 0, 0)
+
+[node name="lamp" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7889, 0, 10.1499)
+
+[node name="lamp2" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.79149)
+
+[node name="lamp3" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.7639)
+lit = true
+
+[node name="lamp4" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4777, 0, 10.1499)
+lit = true
+
+[node name="lamp5" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -9)
+lit = true
+
+[node name="lamp6" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -9)
+lit = true
+
+[node name="lamp7" parent="props" instance=ExtResource("9_ckr81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57505, 0, 10.1499)
+lit = true
+
+[node name="clock_tower2" parent="." instance=ExtResource("10_5cgrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.5788)
+
+[node name="Clock" parent="clock_tower2" instance=ExtResource("2_ubbes")]
+transform = Transform3D(2.21, 0, 0, 0, -9.66022e-08, -2.21, 0, 2.21, -9.66022e-08, 0, 52.433, 4.1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="clock_tower2/Clock"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 2.5, 0)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="Clock2" parent="clock_tower2" instance=ExtResource("2_ubbes")]
+transform = Transform3D(-2.21, -1.93204e-07, 8.44523e-15, 0, -9.66022e-08, -2.21, 1.93204e-07, -2.21, 9.66022e-08, 0, 52.433, -4.1)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="clock_tower2/Clock2"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 2.5, 0)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="Clock3" parent="clock_tower2" instance=ExtResource("2_ubbes")]
+transform = Transform3D(-9.66022e-08, 2.21, -9.66022e-08, 0, -9.66022e-08, -2.21, -2.21, -9.66022e-08, 4.22262e-15, 4.1, 52.433, 0)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="clock_tower2/Clock3"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 2.5, 0)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="Clock4" parent="clock_tower2" instance=ExtResource("2_ubbes")]
+transform = Transform3D(-9.66022e-08, -2.21, 9.66022e-08, 0, -9.66022e-08, -2.21, 2.21, -9.66022e-08, 4.22262e-15, -4.1, 52.433, 0)
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="clock_tower2/Clock4"]
+transform = Transform3D(0.452489, 0, 0, 0, 5.39587e-09, 0.452489, 0, -0.452489, 5.39587e-09, 0, 2.5, 0)
+light_energy = 10.0
+spot_range = 10.0
+
+[node name="walls" type="Node3D" parent="."]
+
+[node name="doorway" parent="walls" instance=ExtResource("12_knjh4")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, -10)
+
+[node name="plaque" parent="walls/doorway" instance=ExtResource("12_anahd")]
+transform = Transform3D(0.235702, 4.26759e-09, 0.235702, 0.235702, -1.03029e-08, -0.235702, 4.26759e-09, 0.333333, -1.03029e-08, 0, 4.4, 0.225)
+
+[node name="icon" type="MeshInstance3D" parent="walls/doorway/plaque"]
+transform = Transform3D(0.424264, 0, -0.424264, 0, 0.6, 0, 0.424264, 0, 0.424264, 0, 0.01, 0)
+mesh = SubResource("ArrayMesh_visdu")
+skeleton = NodePath("")
+
+[node name="wall" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3.75, 0, -10)
+
+[node name="wall2" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.75, 0, -10)
+
+[node name="doorway2" parent="walls" instance=ExtResource("12_knjh4")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -12.2242, 0, -10)
+
+[node name="plaque2" parent="walls/doorway2" instance=ExtResource("12_anahd")]
+transform = Transform3D(0.235702, 4.26759e-09, 0.235702, 0.235702, -1.03029e-08, -0.235702, 4.26759e-09, 0.333333, -1.03029e-08, 0, 4.3, 0.225)
+
+[node name="icon" type="MeshInstance3D" parent="walls/doorway2/plaque2"]
+transform = Transform3D(0.424264, 0, 0.424264, 0, 0.6, 0, -0.424264, 0, 0.424264, 0, 0.01, 0)
+mesh = SubResource("ArrayMesh_yx8r6")
+skeleton = NodePath("")
+
+[node name="wall3" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -12.2242, 0, -6.25)
+
+[node name="wall4" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -12.2242, 0, -13.75)
+
+[node name="doorway3" parent="walls" instance=ExtResource("12_knjh4")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 19.3201, 0, -10)
+
+[node name="plaque3" parent="walls/doorway3" instance=ExtResource("12_anahd")]
+transform = Transform3D(-0.235702, 2.48733e-08, -0.235702, 0.235702, -1.03029e-08, -0.235702, -2.48733e-08, -0.333333, -1.03029e-08, 0, 4.3, 0.225)
+
+[node name="icon" type="MeshInstance3D" parent="walls/doorway3/plaque3"]
+transform = Transform3D(0.424264, 0, -0.424264, 0, 0.6, 8.55208e-16, 0.424264, 0, 0.424264, 0.1, -0.01, -0.1)
+mesh = SubResource("ArrayMesh_1okoh")
+skeleton = NodePath("")
+
+[node name="wall5" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 19.3201, 0, -6.25)
+
+[node name="wall6" parent="walls" instance=ExtResource("13_pc8p0")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 19.3201, 0, -13.75)

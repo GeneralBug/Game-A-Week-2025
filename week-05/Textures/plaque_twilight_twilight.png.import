@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8cq4k6mkohiw"
-path="res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"
+uid="uid://j3nodsf3du7j"
+path="res://.godot/imported/plaque_twilight_twilight.png-653b7e858ae02ad16df2332f4ae579dd.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "d2fbb46e7a3c26f4410d3346183e3ac9"
+"md5": "54a3596086f0b92e6229d5742f23616c"
 }
 
 [deps]
 
-source_file="res://Textures/Clock/clock_clock_face.png"
-dest_files=["res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"]
+source_file="res://Textures/plaque_twilight_twilight.png"
+dest_files=["res://.godot/imported/plaque_twilight_twilight.png-653b7e858ae02ad16df2332f4ae579dd.ctex"]
 
 [params]
 

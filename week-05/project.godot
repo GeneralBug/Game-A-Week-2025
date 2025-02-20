@@ -21,6 +21,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 [autoload]
 
 Options="*res://Scripts/options.gd"
+TimeController="*res://Scripts/time_controller.gd"
 
 [display]
 

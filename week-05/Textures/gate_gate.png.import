@@ -2,33 +2,33 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8cq4k6mkohiw"
-path="res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"
+uid="uid://dq2qfdxm2k0d7"
+path="res://.godot/imported/gate_gate.png-c6060c7bb085ae4017d9d0c59fb4ad38.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "d2fbb46e7a3c26f4410d3346183e3ac9"
+"md5": "0ef98ed04a512f331e76736728353d9e"
 }
 
 [deps]
 
-source_file="res://Textures/Clock/clock_clock_face.png"
-dest_files=["res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"]
+source_file="res://Textures/gate_gate.png"
+dest_files=["res://.godot/imported/gate_gate.png-c6060c7bb085ae4017d9d0c59fb4ad38.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=1.0
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

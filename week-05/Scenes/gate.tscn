@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=4 uid="uid://exd7fqtbivuo"]
+
+[ext_resource type="Texture2D" uid="uid://dq2qfdxm2k0d7" path="res://Textures/gate_gate.png" id="1_ttigq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcq8b"]
+resource_name = "Material.005"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_ttigq")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y7bbg"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -8.74228e-08, 2, 4, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAuvbuzAACAPwAAAAAuvbuzAACAvwAAgEAuvbszAACAPwAAgEAuvbsz")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mtci6"]
+resource_name = "gate_Plane_002"
+_surfaces = [{
+"aabb": AABB(-1, 0, -8.74228e-08, 2, 4, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_jcq8b"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAuvbuzAACAPwAAAAAuvbuzAACAvwAAgEAuvbszAACAPwAAgEAuvbsz/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_y7bbg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjjoj"]
+size = Vector3(2, 4, 0.2)
+
+[node name="gate" type="StaticBody3D"]
+
+[node name="gate_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("ArrayMesh_mtci6")
+skeleton = NodePath("")
+
+[node name="gate_collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+shape = SubResource("BoxShape3D_bjjoj")

@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=4 uid="uid://c0mju8lnq0oh4"]
+
+[ext_resource type="Script" path="res://Scenes/lamp.gd" id="1_m2f7d"]
+[ext_resource type="Texture2D" uid="uid://cc78dskso50pq" path="res://Textures/lamp_lamp.png" id="2_8r11i"]
+[ext_resource type="Material" uid="uid://wi6a4r63scig" path="res://Shaders/lamp_material.tres" id="2_36by0"]
+[ext_resource type="Texture2D" uid="uid://dx0yx7ueh67yu" path="res://Textures/lamp_lamp_glow.png" id="3_txtv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypjcj"]
+resource_name = "lamp"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_8r11i")
+emission_enabled = true
+emission_texture = ExtResource("3_txtv8")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u36n0"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
+"name": "lamp",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAD//wAA//8AAP///////wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ex0nq"]
+resource_name = "lamp_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/3////OA/5//f/////////////+thv+f/39U1fOA/7//f1TV//9U1f//VNWthv+/3IL/n/9/VNX/f1TV//9U1cWE/5///1TV3IL/v/9/////f////////8WE/7//////"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAAJAAMAAAAGAAkACAAVAAoACAATABUAFAARABcAFAAOABEADQAEAA8ADQACAAQABwAMABIABwABAAwAFgAFAAsAFgAQAAUA"),
+"material": SubResource("StandardMaterial3D_ypjcj"),
+"name": "lamp",
+"primitive": 3,
+"uv_scale": Vector4(33.5313, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAAAA////vwAAAAD///8/AAD/////VNUAAP//////PwAA////////AAAAAAAAVNUAAAAAAAD/vwAAAAAAAAAAAAD//wAAVNUAAP//AAAAAAAA//8AAP////8AAP///7///wAA////P///AAD//1TV/////////z///////////////////1TV//8AAAAA/7///wAAAAAAAP//AAAAAFTV/////wAAAAD/////AAD///////8AAFTVVNVU1QAA/3//////VNVU1f//////f/+/VNVU1QAA/3//v/+/VNVU1f+//7//f/+/AAD/f/////+qKqoq//////9//7+qKqoqAAD/f/+//7+qKqoq/7//v/9//7+qKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u36n0")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p3g8l"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.833333, -0.5, 1, 1.33333, 1),
+"format": 34896613377,
+"index_count": 42,
+"index_data": PackedByteArray("BgACAAQABgAHAAIABAAAAAMABAACAAAABwAIAAEABwAGAAgACAAFAAEAAQAFAAAAAwAAAAUAAwAFAAgAAQACAAcAAQAAAAIABAAIAAYABAADAAgA"),
+"name": "lamp",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("/3//PwAAAAAAAP8//38AAP9/////PwAA////P/9/AAD/v////38AAP9/AAD/fwAA/3////+/AAD/P////38AAP9//z///wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xn2xm"]
+resource_name = "lamp_Cone"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.833333, -0.5, 1, 1.33333, 1),
+"attribute_data": PackedByteArray("/8f/f////////////3f/f/93/3//x/9//7////+/////s////+//n/+L//////9/////f/93/3//x/9//+//5/+L////s////9//v//f/7//3/+//9//v/+L////y//n/7P///+L////s////8v/n/93/3//v/9//7//f//H/38="),
+"format": 34896613399,
+"index_count": 42,
+"index_data": PackedByteArray("FwAJAA8AFwAbAAkAEQADAA4AEQAKAAMAGgAcAAUAGgAWABwAHQATAAcABgASAAEADAACABUACwAUAB4ABAAIABkABAAAAAgAEAAfABgAEAANAB8A"),
+"material": ExtResource("2_36by0"),
+"name": "lamp",
+"primitive": 3,
+"uv_scale": Vector4(2, 1.33333, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("/3//PwAAafn/f/8/AAB04f9//z8AAKTU/3//PwAAafkAAP8//39p+QAA/z//f0X9AAD/P/9/dOEAAP8//38BwP9/////P2n5/3////8//MX/f////z9p+f///z//f3mt////P/9/pNT///8//39F/f///z//f2n5/7////9//MX/v////39F/f+/////f2n5/38AAP9/dOH/fwAA/38BwP9/AAD/f3mt/38AAP9/pNT/f////79F/f9/////v/zF/3////+/Rf3/P////39p+f8/////f0X9/z////9//MX/f/8///9F/f9//z///wHA/3//P///ea3/f/8///9F/cr8PVilL6JxNTXkSz3YNIPK/D1YhfhMI6UvonG5P65+yvw9WP/iAUY92DSDFEo/TDU15EtMo3mHPdg0g//iAUZMo3mHPdg0g6UvonG5P65+FEo/TDU15EuF+Ewj/+IBRkyjeYfK/D1YhfhMI//iAUaF+EwjuT+ufhRKP0xMo3mH")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p3g8l")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqlob"]
+size = Vector3(0.25, 8, 0.25)
+
+[node name="lamp" type="StaticBody3D" node_paths=PackedStringArray("light")]
+script = ExtResource("1_m2f7d")
+shader = ExtResource("2_36by0")
+light = NodePath("OmniLight3D")
+
+[node name="post" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0707107, 0, 0.0707107, 0, 4, 0, -0.0707107, 0, 0.0707107, 0, 0, 0)
+gi_mode = 0
+mesh = SubResource("ArrayMesh_ex0nq")
+skeleton = NodePath("")
+
+[node name="top" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.707107, -5.5965e-08, 0.707107, 7.462e-08, -0.75, -3.09086e-08, 0.707107, 2.31815e-08, 0.707107, 0, 4, 0)
+gi_mode = 0
+mesh = SubResource("ArrayMesh_xn2xm")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_pqlob")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.02325, 0)
+light_color = Color(0.803922, 0.737255, 0.298039, 1)
+omni_range = 10.0

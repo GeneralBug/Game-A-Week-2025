@@ -2,29 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8cq4k6mkohiw"
-path="res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"
+uid="uid://brvo5quh3pif0"
+path.s3tc="res://.godot/imported/garden_doorway_garden_doorway.png-c2a36a6f443ba354aef0e9918f81b728.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "d2fbb46e7a3c26f4410d3346183e3ac9"
+"md5": "b138cdc77fb59912de65b02dd16ef5b1"
 }
 
 [deps]
 
-source_file="res://Textures/Clock/clock_clock_face.png"
-dest_files=["res://.godot/imported/clock_clock_face.png-624a41c62a458de487b3f57bddb6b926.ctex"]
+source_file="res://Textures/garden_doorway_garden_doorway.png"
+dest_files=["res://.godot/imported/garden_doorway_garden_doorway.png-c2a36a6f443ba354aef0e9918f81b728.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

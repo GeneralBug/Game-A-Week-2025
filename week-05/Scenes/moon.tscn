@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://drof2nbx70xtm"]
+
+[ext_resource type="Texture2D" uid="uid://d4gf28k6o341l" path="res://Textures/moon.png" id="1_8uact"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xscv"]
+resource_name = "moon"
+transparency = 1
+cull_mode = 2
+shading_mode = 2
+diffuse_mode = 1
+disable_fog = true
+albedo_texture = ExtResource("1_8uact")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.5
+rim_tint = 1.0
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_apg05"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "moon",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pbxcr"]
+resource_name = "moon_Plane_001"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_0xscv"),
+"name": "moon",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_apg05")
+
+[node name="moon" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_pbxcr")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.86104, 0)
+light_color = Color(0.55, 0.88, 1, 1)
+light_energy = 16.0
+light_size = 1.0
+spot_range = 50.0
+spot_angle = 60.74

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://wi6a4r63scig"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7fp52"]
+load_path = "res://.godot/imported/lamp_lamp.png-4b4ea3ea0e00e0adc7dbc1f276c45f20.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v7ymv"]
+load_path = "res://.godot/imported/lamp_lamp_glow.png-d3d45b7bf2e1709946393f4d61d0196e.ctex"
+
+[resource]
+resource_name = "lamp"
+transparency = 4
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_7fp52")
+emission_enabled = true
+emission_energy_multiplier = 0.0
+emission_texture = SubResource("CompressedTexture2D_v7ymv")
+texture_filter = 2

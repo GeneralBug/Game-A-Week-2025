@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=4 uid="uid://d1b3ybfmk60jf"]
+
+[ext_resource type="Texture2D" uid="uid://b5w8lmtkqgtkx" path="res://Textures/garden_wall_garden_wall.png" id="1_1a3jj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ae7t"]
+resource_name = "wall"
+cull_mode = 2
+albedo_texture = ExtResource("1_1a3jj")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i63h4"]
+_surfaces = [{
+"aabb": AABB(-2, -2, -2, 4, 4, 4),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAD//wAA//8AAP///////wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4p162"]
+resource_name = "garden_wall_Cube_005"
+_surfaces = [{
+"aabb": AABB(-2, -2, -2, 4, 4, 4),
+"attribute_data": PackedByteArray("/7f+//9//+////9//7f/f//////+///v/6////9//v///////6//f////3/+////////7/9//3//l/9//3////9//+//l/7///////9/////j/9//3//f/9//v//j///"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAAJAAMAAAAGAAkACAAVAAoACAATABUAFAARABcAFAAOABEADQAEAA8ADQACAAQABwAMABIABwABAAwAFgAFAAsAFgAQAAUA"),
+"material": SubResource("StandardMaterial3D_5ae7t"),
+"name": "wall",
+"primitive": 3,
+"uv_scale": Vector4(4, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAAAA////vwAAAAD/////AAD//////78AAP///////wAA////////AAAAAAAA/78AAAAAAAD/vwAAAAAAAP//AAD//wAA/78AAP//AAD//wAA//8AAP////8AAP///7///wAA////////AAD///////////////////////////////////////8AAAAA/7///wAAAAD/////AAAAAP///////wAA////////AAD///////8AAP///3///wAA/3//f/9//3////9//3//f/+//3/+/wAA/3//f////3////9/////f/+/AAD/f/9//3//v/9//3//f/9//7//v/9/AAD/f/9/////v/9//3////9//7//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_i63h4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3m3f"]
+size = Vector3(8, 4, 0.5)
+
+[node name="wall" type="StaticBody3D"]
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 2, 0)
+mesh = SubResource("ArrayMesh_4p162")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_m3m3f")
