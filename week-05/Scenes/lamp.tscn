@@ -85,6 +85,7 @@ size = Vector3(0.25, 8, 0.25)
 script = ExtResource("1_m2f7d")
 shader = ExtResource("2_36by0")
 light = NodePath("OmniLight3D")
+energy_strength = 2.0
 
 [node name="post" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0707107, 0, 0.0707107, 0, 4, 0, -0.0707107, 0, 0.0707107, 0, 0, 0)

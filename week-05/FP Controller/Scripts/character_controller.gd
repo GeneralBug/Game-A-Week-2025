@@ -33,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 		
 	if event.is_action_pressed("fullscreen"):
 		var mode := DisplayServer.window_get_mode()
@@ -96,5 +96,5 @@ func _headbob(time) -> Vector3:
 	
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQUENCY) * BOB_AMPLITUDE
-	pos.x = cos(time * BOB_FREQUENCY/2) * BOB_AMPLITUDE
+	#pos.x = cos(time * BOB_FREQUENCY/2) * BOB_AMPLITUDE
 	return pos

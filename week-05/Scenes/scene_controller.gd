@@ -1,17 +1,22 @@
 extends Node
 
+@export var debug_mode = false
+@export var debug_start_time = 0
 @export var sky_animator: AnimationPlayer
 @export var prop_animator: AnimationPlayer
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
+	var seconds = 0
 	var current_time = Time.get_time_dict_from_system()
-	var seconds = current_time.second + current_time.minute * 60 + current_time.hour * 3600
-	sky_animator.set_autoplay("sky animation")
-	#sky_animator.seek(seconds, false, false)
-	prop_animator.set_autoplay("prop animation")
-	#prop_animator.seek(seconds, false, false)
+	if debug_mode:
+		seconds = debug_start_time
+	else:
+		seconds = current_time.second + current_time.minute * 60 + current_time.hour * 3600
 
+	sky_animator.play("sky animation")
+	sky_animator.advance(seconds)
+	prop_animator.play("prop animation")
+	prop_animator.advance(seconds)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	print("seconds is ", seconds, ", which is about ", seconds/3600, " hours")

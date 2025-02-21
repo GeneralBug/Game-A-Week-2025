@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://div4j7t6rw6cq"]
+
+[ext_resource type="Texture2D" uid="uid://wktfxcue0147" path="res://Textures/treeline_trees.png" id="1_081da"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eexwi"]
+resource_name = "Material.007"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.466181, 0.466181, 0.466181, 1)
+albedo_texture = ExtResource("1_081da")
+uv1_offset = Vector3(0.75, 0, 0.5)
+uv1_triplanar = true
+uv2_triplanar = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sp0mn"]
+resource_name = "treeline_Plane_008"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_eexwi"),
+"name": "Material.007",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+
+[node name="treeline" type="Node3D"]
+transform = Transform3D(-7.5, -6.55671e-07, 0, 6.55671e-07, -7.5, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="treeline" type="MeshInstance3D" parent="."]
+transform = Transform3D(11.2, 0, 0, 0, -6.11959e-08, 1.4, 0, -1.4, -6.11959e-08, 0, 0, 0)
+mesh = SubResource("ArrayMesh_sp0mn")
+skeleton = NodePath("")

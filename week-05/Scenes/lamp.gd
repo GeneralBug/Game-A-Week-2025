@@ -12,7 +12,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if lit:
-		shader.set("emission_energy_multiplier", lerp(shader.get("emission_energy_multiplier"), energy_strength, delta))
+		shader.set("emission_energy_multiplier", lerp(shader.get("emission_energy_multiplier"), energy_strength/2, delta))
 		light.light_energy = lerp(light.light_energy, energy_strength, delta)
 	else:
 		shader.set("emission_energy_multiplier", lerp(shader.get("emission_energy_multiplier"), 0.0, delta))

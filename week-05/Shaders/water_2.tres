@@ -8,7 +8,7 @@ load_path = "res://.godot/imported/green_water.png-aeb14e33954a39b5333a7a10e23a6
 [resource]
 render_priority = 0
 shader = ExtResource("1_3obqk")
-shader_parameter/albedo = Color(0.3003, 0.574665, 0.91, 0.623529)
+shader_parameter/albedo = Color(0.3, 0.575, 0.91, 0.5)
 shader_parameter/point_size = 0.1
 shader_parameter/roughness = 0.375
 shader_parameter/metallic_texture_channel = null
