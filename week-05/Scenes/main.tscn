@@ -1,5 +1,6 @@
-[gd_scene load_steps=56 format=4 uid="uid://bjuhsdj21sv2b"]
+[gd_scene load_steps=57 format=4 uid="uid://bjuhsdj21sv2b"]
 
+[ext_resource type="PackedScene" uid="uid://d14upw11683j7" path="res://Fade In/Scenes/fade in.tscn" id="1_jkr3l"]
 [ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://FP Controller/Scenes/player.tscn" id="1_l23db"]
 [ext_resource type="Script" path="res://Scenes/scene_controller.gd" id="1_vddx5"]
 [ext_resource type="PackedScene" uid="uid://ca7grud4ovj1m" path="res://Scenes/clock.tscn" id="2_ubbes"]
@@ -828,6 +829,8 @@ data = PackedVector3Array(29.4118, 0, 100, 25.4902, 0, 64.7042, 29.4118, 0, 56.8
 
 [node name="main" type="Node3D"]
 
+[node name="fade" parent="." instance=ExtResource("1_jkr3l")]
+
 [node name="SceneController" type="Node" parent="." node_paths=PackedStringArray("sky_animator", "prop_animator")]
 script = ExtResource("1_vddx5")
 debug_start_time = 43200
@@ -838,7 +841,7 @@ prop_animator = NodePath("../props")
 environment = SubResource("Environment_p6f65")
 
 [node name="Player" parent="." instance=ExtResource("1_l23db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 65.3154)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 1, 70)
 walk_speed = 4.0
 
 [node name="water2" type="MeshInstance3D" parent="."]
