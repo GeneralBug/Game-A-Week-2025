@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="WEEK 5 !!"
+config/name="A Timetacular Courtyard! What Secrets Does it Hold?"
 config/description="Game-A-Week 2025 week 5"
 config/version="0.1"
 run/main_scene="res://Scenes/main.tscn"
@@ -25,8 +25,9 @@ TimeController="*res://Scripts/time_controller.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/mode=3
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

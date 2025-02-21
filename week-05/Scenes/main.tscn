@@ -841,8 +841,9 @@ prop_animator = NodePath("../props")
 environment = SubResource("Environment_p6f65")
 
 [node name="Player" parent="." instance=ExtResource("1_l23db")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 1, 70)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 70)
 walk_speed = 4.0
+debug = false
 
 [node name="water2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, -7.70776)
@@ -1465,7 +1466,6 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -22.8932, 0)
 shape = SubResource("ConcavePolygonShape3D_e1wyn")
 
 [node name="lake_collider" type="StaticBody3D" parent="ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.6499, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground2/lake_collider"]
 shape = SubResource("ConcavePolygonShape3D_e1jkf")
