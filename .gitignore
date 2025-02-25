@@ -17,3 +17,5 @@ mono_crash.*.json
 *.tmp
 # saved for reference but unused
 week-03/Shaders/downloaded_water.gdshader
+#in case reggie gets mad at me
+week-06/StolenStuff/*

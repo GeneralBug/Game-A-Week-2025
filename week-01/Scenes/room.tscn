@@ -1,21 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bn5p5l3ddymkb"]
+[gd_scene load_steps=17 format=3 uid="uid://bn5p5l3ddymkb"]
 
 [ext_resource type="PackedScene" uid="uid://cqe8docy4as57" path="res://Scenes/interactable_switch.tscn" id="1_8v3wb"]
 [ext_resource type="PackedScene" uid="uid://cp52upnuv8u8t" path="res://Scenes/interactable_door.tscn" id="2_ec1s5"]
+[ext_resource type="PackedScene" uid="uid://cqjgp8scitqir" path="res://Scenes/desk.tscn" id="3_8ctc8"]
 [ext_resource type="PackedScene" uid="uid://fodclur6volp" path="res://Models/painting_1.glb" id="3_mfc4c"]
-[ext_resource type="PackedScene" uid="uid://njheuvmshhw7" path="res://Models/desk_2.glb" id="3_y805l"]
-[ext_resource type="PackedScene" uid="uid://j470l2w2ewtt" path="res://Models/pc_tower_1.glb" id="4_e25pb"]
 [ext_resource type="PackedScene" uid="uid://de0dxb7sm17p" path="res://Models/door_1.glb" id="4_li1gv"]
 [ext_resource type="PackedScene" uid="uid://d1u7w2bqgf0co" path="res://Models/bookshelf_1.glb" id="4_xeb40"]
-[ext_resource type="PackedScene" uid="uid://fnl6q121xmfi" path="res://Models/pc_monitor_1.glb" id="5_415cj"]
 [ext_resource type="Script" path="res://Scripts/one_way_collider.gd" id="5_pewy4"]
 [ext_resource type="PackedScene" uid="uid://bjd324jucei8e" path="res://Models/floor_1.glb" id="5_u3uq7"]
 [ext_resource type="PackedScene" uid="uid://dl35r6d7xpcja" path="res://Models/ceiling_1.glb" id="6_tplph"]
 [ext_resource type="PackedScene" uid="uid://b661c1ubvj1y5" path="res://Models/wall_2.glb" id="7_1d5pm"]
 [ext_resource type="PackedScene" uid="uid://dckgat2yewsrn" path="res://Models/wall_1.glb" id="8_ay6bc"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_l4de6"]
-size = Vector3(6, 2.25, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tq2wg"]
 size = Vector3(3, 6, 0.25)
@@ -48,35 +43,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 openable = true
 pivot = NodePath("../right_pivot")
 
-[node name="desk_2" parent="." instance=ExtResource("3_y805l")]
-transform = Transform3D(0.0467501, 0, 0.49781, 0, 0.5, 0, -0.49781, 0, 0.0467501, -1.57831, 0, -0.15)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="desk_2"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="desk_2/StaticBody3D"]
-transform = Transform3D(0.999992, 0, 3.05474e-07, 0, 1, 0, -3.05474e-07, 0, 0.999992, 0, 0, 0)
-shape = SubResource("BoxShape3D_l4de6")
-
-[node name="pc_tower_1" parent="desk_2" instance=ExtResource("4_e25pb")]
-transform = Transform3D(-0.0457728, -0.00190059, -0.748598, -0.000416117, 0.749997, -0.00187869, 0.748601, 0.000300683, -0.0457736, 2.125, 0.75, -0.025)
-
-[node name="pc_monitor_1" parent="desk_2" instance=ExtResource("5_415cj")]
-transform = Transform3D(-0.747723, 0, 0.0584006, 0, 0.75, 0, -0.0584006, 0, -0.747723, -0.0131486, 2.75945, -0.140011)
-
-[node name="screen_light" type="SpotLight3D" parent="desk_2/pc_monitor_1"]
-transform = Transform3D(2.65844, 2.32409e-07, 0.209224, 2.33127e-07, -2.66667, 0, 0.209224, 1.8291e-08, -2.65844, 0, 0, 0)
-light_color = Color(3.46541e-06, 0, 0.80283, 1)
-light_energy = 6.869
-light_indirect_energy = 16.0
-light_specular = 1.215
-light_bake_mode = 0
-shadow_enabled = true
-shadow_blur = 10.0
-spot_range = 35.544
-spot_attenuation = -0.11
-spot_angle = 66.82
-spot_angle_attenuation = 2.0
+[node name="Desk" parent="." instance=ExtResource("3_8ctc8")]
 
 [node name="door_entrance" parent="." node_paths=PackedStringArray("own_collider") instance=ExtResource("4_li1gv")]
 transform = Transform3D(5.96244e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.96244e-09, 4, 0, 0)

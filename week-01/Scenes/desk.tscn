@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqjgp8scitqir"]
+
+[ext_resource type="PackedScene" uid="uid://njheuvmshhw7" path="res://Models/desk_2.glb" id="1_tirp2"]
+[ext_resource type="PackedScene" uid="uid://j470l2w2ewtt" path="res://Models/pc_tower_1.glb" id="2_uesvx"]
+[ext_resource type="PackedScene" uid="uid://fnl6q121xmfi" path="res://Models/pc_monitor_1.glb" id="3_thqbo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4de6"]
+size = Vector3(6, 2.25, 2)
+
+[node name="Desk" type="Node3D"]
+transform = Transform3D(0.0467501, 0, 0.49781, 0, 0.5, 0, -0.49781, 0, 0.0467501, -1.57831, 0, -0.15)
+
+[node name="desk_2" parent="." instance=ExtResource("1_tirp2")]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="desk_2"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="desk_2/StaticBody3D"]
+transform = Transform3D(0.999992, 0, 3.05474e-07, 0, 1, 0, -3.05474e-07, 0, 0.999992, 0, 0, 0)
+shape = SubResource("BoxShape3D_l4de6")
+
+[node name="pc_tower_1" parent="desk_2" instance=ExtResource("2_uesvx")]
+transform = Transform3D(-0.0457728, -0.00190059, -0.748598, -0.000416117, 0.749997, -0.00187869, 0.748601, 0.000300683, -0.0457736, 2.125, 0.75, -0.025)
+
+[node name="pc_monitor_1" parent="desk_2" instance=ExtResource("3_thqbo")]
+transform = Transform3D(-0.747723, 0, 0.0584006, 0, 0.75, 0, -0.0584006, 0, -0.747723, -0.0131486, 2.75945, -0.140011)
+
+[node name="screen_light" type="SpotLight3D" parent="desk_2/pc_monitor_1"]
+transform = Transform3D(2.65844, 2.32409e-07, 0.209224, 2.33127e-07, -2.66667, 0, 0.209224, 1.8291e-08, -2.65844, 0, 0, 0)
+light_color = Color(3.46541e-06, 0, 0.80283, 1)
+light_energy = 6.869
+light_indirect_energy = 16.0
+light_specular = 1.215
+light_bake_mode = 0
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 35.544
+spot_attenuation = -0.11
+spot_angle = 66.82
+spot_angle_attenuation = 2.0
