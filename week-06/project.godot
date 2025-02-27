@@ -13,7 +13,7 @@ config_version=5
 config/name="week 6"
 config/description="Game-A-Week 2025 week 5"
 config/version="0.1"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/scene B).tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=30
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -21,7 +21,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 [autoload]
 
 Options="*res://Scripts/options.gd"
-TimeController="*res://Scripts/time_controller.gd"
+GameController="*res://Scripts/game_controller.gd"
 
 [display]
 

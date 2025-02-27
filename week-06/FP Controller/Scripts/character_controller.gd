@@ -12,8 +12,6 @@ const BOB_AMPLITUDE = 0.1
 var t_bob = 0.0
 
 @onready var head = $Head
-@onready var camera = $Head/Camera3D
-@onready var debug_camera = $"Head/DEBUG CAMERA"
 
 @export var headbob = true
 @export var debug = true
@@ -31,9 +29,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# Camera rotation
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+		rotate_y(-event.relative.x * SENSITIVITY)
+		head.rotate_x(-event.relative.y * SENSITIVITY)
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-85), deg_to_rad(60))
 		
 	if event.is_action_pressed("fullscreen"):
 		var mode := DisplayServer.window_get_mode()
@@ -42,13 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event is InputEventKey and Input.is_action_pressed("quit_to_desktop"):
 		get_tree().quit()
-	
-	if event is InputEventKey and Input.is_action_pressed("debug") and debug:
-		if camera.current:
-			debug_camera.current = true
-		else:
-			camera.current = true
-	
+		
 	if Options.run_mode_toggle and Input.is_action_pressed("run"):
 		run_toggle = !run_toggle
 	if Options.crouch_mode_toggle and Input.is_action_pressed("crouch"):
@@ -70,7 +62,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forwards", "backwards")
-	var direction: Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
 			velocity.x = direction.x * speed
@@ -81,20 +73,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 5.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 5.0)
-		
-	# Head bob
-	if headbob:
-		t_bob += delta * velocity.length() * float(is_on_floor())
-		camera.transform.origin = _headbob(t_bob)
-	
-	if init_velocity:
-		velocity.x = -1 * speed
-		init_velocity = false
+			
 	move_and_slide()
-	
-func _headbob(time) -> Vector3:
-	
-	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQUENCY) * BOB_AMPLITUDE
-	#pos.x = cos(time * BOB_FREQUENCY/2) * BOB_AMPLITUDE
-	return pos

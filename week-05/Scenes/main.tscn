@@ -1,11 +1,9 @@
-[gd_scene load_steps=58 format=4 uid="uid://bjuhsdj21sv2b"]
+[gd_scene load_steps=52 format=4 uid="uid://bjuhsdj21sv2b"]
 
 [ext_resource type="PackedScene" uid="uid://d14upw11683j7" path="res://Fade In/Scenes/fade in.tscn" id="1_jkr3l"]
 [ext_resource type="PackedScene" uid="uid://6s3jhmubsqet" path="res://FP Controller/Scenes/player.tscn" id="1_l23db"]
 [ext_resource type="Script" path="res://Scenes/scene_controller.gd" id="1_vddx5"]
 [ext_resource type="PackedScene" uid="uid://ca7grud4ovj1m" path="res://Scenes/clock.tscn" id="2_ubbes"]
-[ext_resource type="Material" uid="uid://cxyyskgvxeoxr" path="res://Shaders/water_2.tres" id="4_d5xeo"]
-[ext_resource type="Shader" path="res://Shaders/water_1.gdshader" id="5_w37ue"]
 [ext_resource type="PackedScene" uid="uid://cu0p4i5e5otb2" path="res://Scenes/sun.tscn" id="6_mkyvh"]
 [ext_resource type="PackedScene" uid="uid://drof2nbx70xtm" path="res://Scenes/moon.tscn" id="7_pr2lp"]
 [ext_resource type="PackedScene" uid="uid://exd7fqtbivuo" path="res://Scenes/gate.tscn" id="8_rc40s"]
@@ -23,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bn0iq0bm560xt" path="res://Textures/ground_dirt_1.png" id="18_qyf4x"]
 [ext_resource type="PackedScene" uid="uid://bq31flx37pcry" path="res://Scenes/treeline.tscn" id="19_syn6w"]
 [ext_resource type="PackedScene" uid="uid://div4j7t6rw6cq" path="res://Scenes/treeline2.tscn" id="20_lgy7c"]
-[ext_resource type="PackedScene" uid="uid://bwcbr4s84lej8" path="res://Scenes/desk.tscn" id="22_srrv0"]
+[ext_resource type="PackedScene" uid="uid://opda3xec6s3y" path="res://Scenes/water.tscn" id="22_lo0xk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tdjdg"]
 sky_top_color = Color(0.263891, 0.453399, 0.70131, 1)
@@ -42,40 +40,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0, 0.380392, 0.796078, 1)
 reflected_light_source = 2
 tonemap_mode = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_b4wa1"]
-material = ExtResource("4_d5xeo")
-uv2_padding = 0.0
-size = Vector2(150, 150)
-subdivide_width = 1
-subdivide_depth = 1
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mpk1v"]
-load_path = "res://.godot/imported/green_water.png-aeb14e33954a39b5333a7a10e23a6bcb.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqgdj"]
-render_priority = 0
-shader = ExtResource("5_w37ue")
-shader_parameter/albedo = Color(0.3, 0.575, 0.91, 0.5)
-shader_parameter/point_size = 0.1
-shader_parameter/roughness = 0.375
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.25
-shader_parameter/metallic = 0.0
-shader_parameter/backlight = Color(1, 1, 1, 0)
-shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv2_blend_sharpness = 8.543
-shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(0.1, 0.1, 0.1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_mpk1v")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0ea4v"]
-material = SubResource("ShaderMaterial_cqgdj")
-size = Vector2(150, 150)
-subdivide_width = 1
-subdivide_depth = 1
 
 [sub_resource type="Animation" id="Animation_2g2hl"]
 length = 0.001
@@ -846,14 +810,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 70)
 walk_speed = 4.0
 debug = false
 
-[node name="water2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, -7.70776)
-mesh = SubResource("PlaneMesh_b4wa1")
-
-[node name="water" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -7.70776)
-mesh = SubResource("PlaneMesh_0ea4v")
-
 [node name="sky" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_73wrp")
@@ -1458,9 +1414,6 @@ transform = Transform3D(-0.275743, 2.41063e-08, 0.999324, -6.55671e-07, -7.5, 5.
 [node name="treeline_FRONT" parent="trees" instance=ExtResource("19_syn6w")]
 transform = Transform3D(-7.0477, -6.16129e-07, 0.34202, 6.55671e-07, -7.5, 0, 2.56515, 2.24253e-07, 0.939692, 29.3129, 4.14904, 72.5067)
 
-[node name="Desk" parent="." instance=ExtResource("22_srrv0")]
-transform = Transform3D(0.498568, 0, -0.0378201, 0, 0.5, 0, 0.0378201, 0, 0.498568, 55.0257, 4.76837e-07, 52.6135)
-
 [node name="ground2" type="StaticBody3D" parent="."]
 
 [node name="pond_collider" type="StaticBody3D" parent="ground2"]
@@ -1482,3 +1435,5 @@ skeleton = NodePath("")
 [node name="ground_collider" type="CollisionShape3D" parent="ground2"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_hgr6k")
+
+[node name="Water" parent="." instance=ExtResource("22_lo0xk")]
