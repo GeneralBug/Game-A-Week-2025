@@ -15,8 +15,8 @@ func _physics_process(delta: float) -> void:
 	rotate_y(-deg_to_rad(0.35))
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body)
+	#print(body)
 	if body.name == "Player":
 		audio.play()
 		GameController.breadbug_count += 1
-		self.visible = false
+		breadbug.queue_free()
