@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var message_1 = $Control/wrangle
 @onready var message_2 = $Control/stew
+@onready var message_count = $Control/wrangle/count
 @onready var BGM:AudioStreamPlayer3D = $bgm
 @export var victory_track: AudioStreamMP3
 
@@ -9,5 +10,6 @@ extends Node3D
 func _ready() -> void:
 	GameController.message_1 = message_1
 	GameController.message_2 = message_2
+	GameController.message_count = message_count
 	GameController.BGM = BGM
 	GameController.victory_track = victory_track

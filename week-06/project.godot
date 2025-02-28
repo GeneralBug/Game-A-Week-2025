@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="week 6"
-config/description="Game-A-Week 2025 week 5"
-config/version="0.1"
+config/name="A Plethora of Local Fauna are Roaming this Alien Planet, but One Seems Eager to Please!"
+config/description="Game-A-Week 2025 week 6"
+config/version="1"
 run/main_scene="res://Scenes/scene B).tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=30
@@ -27,6 +27,7 @@ GameController="*res://Scripts/game_controller.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
+window/size/mode=3
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
