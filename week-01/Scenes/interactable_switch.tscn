@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqe8docy4as57"]
 
-[ext_resource type="Script" path="res://Scripts/interactable_switch.gd" id="1_6lexl"]
+[ext_resource type="Script" uid="uid://bup7sjdhvknpt" path="res://Scripts/interactable_switch.gd" id="1_6lexl"]
 [ext_resource type="PackedScene" uid="uid://bjbb2ht07d8g" path="res://Models/light_switch_1.glb" id="1_8r0at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqax5"]

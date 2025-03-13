@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://buh8jownhtln8"]
 
-[ext_resource type="Script" path="res://Scenes/roaming_breadbug.gd" id="1_n7mau"]
+[ext_resource type="Script" uid="uid://mqaew38r85wk" path="res://Scenes/roaming_breadbug.gd" id="1_n7mau"]
 [ext_resource type="AudioStream" uid="uid://cchggpxl1xieo" path="res://StolenStuff/Audio/Breadbug.wav" id="2_vem6d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mtfto"]
@@ -1764,16 +1764,16 @@ tracks/22/keys = PackedFloat32Array(0, 1, -0.842531, 0.0663989, 0.0622156, 0.530
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h6f5v"]
 _data = {
-"dead": SubResource("Animation_7vn5w"),
-"move1": SubResource("Animation_hkt7g"),
-"move2": SubResource("Animation_ibn2h"),
-"move3": SubResource("Animation_5bsp6"),
-"type1": SubResource("Animation_0f7i1"),
-"type2": SubResource("Animation_bu48m"),
-"type3": SubResource("Animation_pywb5"),
-"type4": SubResource("Animation_qd3sv"),
-"type5": SubResource("Animation_ss5oh"),
-"wait1": SubResource("Animation_07aa6")
+&"dead": SubResource("Animation_7vn5w"),
+&"move1": SubResource("Animation_hkt7g"),
+&"move2": SubResource("Animation_ibn2h"),
+&"move3": SubResource("Animation_5bsp6"),
+&"type1": SubResource("Animation_0f7i1"),
+&"type2": SubResource("Animation_bu48m"),
+&"type3": SubResource("Animation_pywb5"),
+&"type4": SubResource("Animation_qd3sv"),
+&"type5": SubResource("Animation_ss5oh"),
+&"wait1": SubResource("Animation_07aa6")
 }
 
 [node name="roaming_breadbug" type="Node3D"]

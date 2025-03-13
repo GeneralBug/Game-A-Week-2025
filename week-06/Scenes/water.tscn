@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://opda3xec6s3y"]
 
 [ext_resource type="Material" uid="uid://cxyyskgvxeoxr" path="res://Shaders/water_2.tres" id="1_1flou"]
-[ext_resource type="Shader" path="res://Shaders/water_1.gdshader" id="2_hxl24"]
+[ext_resource type="Shader" uid="uid://bxbalye8o1yol" path="res://Shaders/water_1.gdshader" id="2_hxl24"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b4wa1"]
 material = ExtResource("1_1flou")
@@ -17,9 +17,10 @@ load_path = "res://.godot/imported/green_water.png-aeb14e33954a39b5333a7a10e23a6
 render_priority = 0
 shader = ExtResource("2_hxl24")
 shader_parameter/albedo = Color(0.3, 0.575, 0.91, 0.5)
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_mpk1v")
 shader_parameter/point_size = 0.1
 shader_parameter/roughness = 0.375
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.25
 shader_parameter/metallic = 0.0
 shader_parameter/backlight = Color(1, 1, 1, 0)
@@ -29,7 +30,6 @@ shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0.1, 0.1, 0.1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_mpk1v")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0ea4v"]
 material = SubResource("ShaderMaterial_cqgdj")

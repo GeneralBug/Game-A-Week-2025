@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp52upnuv8u8t"]
 
 [ext_resource type="PackedScene" uid="uid://de0dxb7sm17p" path="res://Models/door_1.glb" id="1_gixbc"]
-[ext_resource type="Script" path="res://Scripts/interactable_door.gd" id="1_q53u3"]
+[ext_resource type="Script" uid="uid://sdei50i4rbfw" path="res://Scripts/interactable_door.gd" id="1_q53u3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_76yon"]
 size = Vector3(1.5, 3, 0.125)

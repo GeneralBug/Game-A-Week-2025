@@ -2,10 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8t50xq6cd6r"
-path="res://.godot/imported/desk_2_desk.png-3fbf2ef7eb0dd65bf8124baaaebe273b.ctex"
+uid="uid://bpx2y4fd738ta"
+path.s3tc="res://.godot/imported/desk_2_desk.png-3fbf2ef7eb0dd65bf8124baaaebe273b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "b81868eeefecf9b56fd154e33d8d534e"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Textures/desk_2_desk.png"
-dest_files=["res://.godot/imported/desk_2_desk.png-3fbf2ef7eb0dd65bf8124baaaebe273b.ctex"]
+dest_files=["res://.godot/imported/desk_2_desk.png-3fbf2ef7eb0dd65bf8124baaaebe273b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

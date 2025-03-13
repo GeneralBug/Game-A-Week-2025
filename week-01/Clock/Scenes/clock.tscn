@@ -1,0 +1,199 @@
+[gd_scene load_steps=18 format=3 uid="uid://ca7grud4ovj1m"]
+
+[ext_resource type="Script" uid="uid://cpuq57f6p13oc" path="res://Clock/Scripts/clock.gd" id="1_64x62"]
+[ext_resource type="Texture2D" uid="uid://bd58gqiwqp2o3" path="res://Clock/Textures/clock_face_clock_face_2.png" id="2_ogwp3"]
+[ext_resource type="Texture2D" uid="uid://fc0vl3ufnvlm" path="res://Clock/Textures/clock_clock_face.png" id="2_r4kqk"]
+[ext_resource type="Texture2D" uid="uid://ctduchgmvg14j" path="res://Clock/Textures/clock_clock_hour_hand.png" id="3_uxh8d"]
+[ext_resource type="Texture2D" uid="uid://mp4glsacay78" path="res://Clock/Textures/clock_clock_minute_hand.png" id="4_y83vg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ywmo"]
+resource_name = "moon.001"
+transparency = 4
+albedo_texture = ExtResource("2_ogwp3")
+emission_enabled = true
+emission = Color(7.70092e-07, 7.70092e-07, 1.86524e-07, 1)
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qbus8"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "moon.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rhodq"]
+resource_name = "clock_face_Plane_001"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_3ywmo"),
+"name": "moon.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qbus8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asx8u"]
+resource_name = "moon.001"
+transparency = 4
+albedo_texture = ExtResource("2_r4kqk")
+emission_enabled = true
+emission = Color(7.70092e-07, 7.70092e-07, 1.86524e-07, 1)
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1t75j"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "moon.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7cgjr"]
+resource_name = "clock_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_asx8u"),
+"name": "moon.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1t75j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tvst"]
+resource_name = "Material.005"
+transparency = 4
+albedo_texture = ExtResource("3_uxh8d")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ux1gu"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4xona"]
+resource_name = "clock_Plane_004"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_4tvst"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ux1gu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f403y"]
+resource_name = "Material.006"
+transparency = 4
+albedo_texture = ExtResource("4_y83vg")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wp6l5"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1perd"]
+resource_name = "clock_Plane_005"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_f403y"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_wp6l5")
+
+[node name="Clock" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_64x62")
+
+[node name="face" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("ArrayMesh_rhodq")
+skeleton = NodePath("")
+
+[node name="face2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
+mesh = SubResource("ArrayMesh_7cgjr")
+skeleton = NodePath("")
+
+[node name="hour_pivot" type="Node3D" parent="."]
+
+[node name="hour hand2" type="MeshInstance3D" parent="hour_pivot"]
+transform = Transform3D(0.117, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0.02, -0.45)
+mesh = SubResource("ArrayMesh_4xona")
+skeleton = NodePath("")
+
+[node name="minute_pivot" type="Node3D" parent="."]
+
+[node name="minute hand" type="MeshInstance3D" parent="minute_pivot"]
+transform = Transform3D(0.117, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0.02, -0.45)
+mesh = SubResource("ArrayMesh_1perd")
+skeleton = NodePath("")
+
+[node name="second_pivot" type="Node3D" parent="."]
+
+[node name="second hand" type="MeshInstance3D" parent="second_pivot"]
+transform = Transform3D(0.117, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0.02, -0.45)
+mesh = SubResource("ArrayMesh_1perd")
+skeleton = NodePath("")
