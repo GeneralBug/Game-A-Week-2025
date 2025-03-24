@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqjgp8scitqir"]
+[gd_scene load_steps=6 format=3 uid="uid://cqjgp8scitqir"]
 
 [ext_resource type="PackedScene" uid="uid://njheuvmshhw7" path="res://Models/desk_2.glb" id="1_tirp2"]
 [ext_resource type="PackedScene" uid="uid://j470l2w2ewtt" path="res://Models/pc_tower_1.glb" id="2_uesvx"]
 [ext_resource type="PackedScene" uid="uid://fnl6q121xmfi" path="res://Models/pc_monitor_1.glb" id="3_thqbo"]
+[ext_resource type="AudioStream" uid="uid://cn6u5f0jdhr18" path="res://Audio/pc ambient.wav" id="4_7rkfp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4de6"]
 size = Vector3(6, 2.25, 2)
@@ -25,6 +26,13 @@ transform = Transform3D(-0.0457728, -0.00190059, -0.748598, -0.000416117, 0.7499
 
 [node name="pc_monitor_1" parent="desk_2" instance=ExtResource("3_thqbo")]
 transform = Transform3D(-0.747723, 0, 0.0584006, 0, 0.75, 0, -0.0584006, 0, -0.747723, -0.0131486, 2.75945, -0.140011)
+
+[node name="pc ambient" type="AudioStreamPlayer3D" parent="desk_2/pc_monitor_1"]
+transform = Transform3D(-2.65857, 0, -0.207646, 0, 2.66667, 0, 0.207646, 0, -2.65857, -3.01546, -2.59122, 0.332243)
+stream = ExtResource("4_7rkfp")
+volume_db = -5.0
+autoplay = true
+max_distance = 8.0
 
 [node name="screen_light" type="SpotLight3D" parent="desk_2/pc_monitor_1"]
 transform = Transform3D(2.65844, 2.32409e-07, 0.209224, 2.33127e-07, -2.66667, 0, 0.209224, 1.8291e-08, -2.65844, 0, 0, 0)

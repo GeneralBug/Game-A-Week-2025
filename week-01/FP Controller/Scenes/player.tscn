@@ -10,6 +10,7 @@
 [node name="Player" type="CharacterBody3D"]
 input_ray_pickable = false
 script = ExtResource("1_1r61n")
+run_speed = 4.0
 crouch_speed = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

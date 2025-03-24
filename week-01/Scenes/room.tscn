@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_tq2wg")
 
 [node name="door_area" type="Area3D" parent="door_entrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58546e-08, 3, 2.16812)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_entrance/door_area"]
 shape = SubResource("BoxShape3D_h5b67")
@@ -176,4 +176,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 [node name="left_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
+[connection signal="body_entered" from="door_entrance/door_area" to="door_entrance" method="_on_door_area_body_entered"]
 [connection signal="body_exited" from="door_entrance/door_area" to="door_entrance" method="_on_door_area_body_exited"]

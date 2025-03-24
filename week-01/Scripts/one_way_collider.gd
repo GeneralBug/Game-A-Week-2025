@@ -5,11 +5,6 @@ extends Node3D
 
 func _ready() -> void:
 	disable_collider()
-
-func _on_door_area_body_exited(body: Node3D) -> void:
-	#print("AAAAAA ", body.name, " trying to enter door")
-	if body.name == "Player":
-		call_deferred("enable_collider")
 		
 func enable_collider():
 	#print("beep boop locking door")
@@ -20,3 +15,8 @@ func disable_collider():
 	#print("unlocking door!!!!!!!!!")
 	own_collider.disabled = true
 	self.visible = false
+
+func _on_door_area_body_entered(body: Node3D) -> void:
+	#print("AAAAAA ", body.name, " trying to enter door")
+	if body.name == "Player":
+		call_deferred("enable_collider")
