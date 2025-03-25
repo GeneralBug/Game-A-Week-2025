@@ -1,17 +1,53 @@
-[gd_scene load_steps=18 format=3 uid="uid://bn5p5l3ddymkb"]
+[gd_scene load_steps=24 format=4 uid="uid://bn5p5l3ddymkb"]
 
+[ext_resource type="Script" uid="uid://hsjfvk78oscc" path="res://Scripts/room_controller.gd" id="1_5fqy3"]
 [ext_resource type="PackedScene" uid="uid://cqe8docy4as57" path="res://Scenes/interactable_switch.tscn" id="1_8v3wb"]
 [ext_resource type="PackedScene" uid="uid://cp52upnuv8u8t" path="res://Scenes/interactable_door.tscn" id="2_ec1s5"]
 [ext_resource type="PackedScene" uid="uid://cqjgp8scitqir" path="res://Scenes/desk.tscn" id="3_8ctc8"]
 [ext_resource type="PackedScene" uid="uid://fodclur6volp" path="res://Models/painting_1.glb" id="3_mfc4c"]
-[ext_resource type="PackedScene" uid="uid://de0dxb7sm17p" path="res://Models/door_1.glb" id="4_li1gv"]
 [ext_resource type="PackedScene" uid="uid://d1u7w2bqgf0co" path="res://Models/bookshelf_1.glb" id="4_xeb40"]
 [ext_resource type="Script" uid="uid://c3gjbkhpvunri" path="res://Scripts/one_way_collider.gd" id="5_pewy4"]
 [ext_resource type="PackedScene" uid="uid://bjd324jucei8e" path="res://Models/floor_1.glb" id="5_u3uq7"]
+[ext_resource type="AudioStream" uid="uid://dm04l25in8pew" path="res://Audio/door_close.wav" id="6_03u2k"]
+[ext_resource type="Material" uid="uid://b7oovl3fvlsf1" path="res://Materials/interactable_door.material" id="6_08xfw"]
 [ext_resource type="PackedScene" uid="uid://dl35r6d7xpcja" path="res://Models/ceiling_1.glb" id="6_tplph"]
 [ext_resource type="PackedScene" uid="uid://b661c1ubvj1y5" path="res://Models/wall_2.glb" id="7_1d5pm"]
+[ext_resource type="Script" uid="uid://cw175vdin1mq5" path="res://Scripts/interactable_locked.gd" id="7_08xfw"]
 [ext_resource type="PackedScene" uid="uid://ca7grud4ovj1m" path="res://Clock/Scenes/clock.tscn" id="7_wph6n"]
+[ext_resource type="Material" uid="uid://drnpkcnxl2dku" path="res://Materials/interactable_door_highlight.material" id="8_0tv2a"]
 [ext_resource type="PackedScene" uid="uid://dckgat2yewsrn" path="res://Models/wall_1.glb" id="8_ay6bc"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rd5ey"]
+_surfaces = [{
+"aabb": AABB(-2, 0, -0.125, 4, 8, 0.25),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "bookshelf material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_itsvw"]
+resource_name = "door_1_Cube_001"
+_surfaces = [{
+"aabb": AABB(-2, 0, -0.125, 4, 8, 0.25),
+"attribute_data": PackedByteArray("///////vAAD//wAA/+///wAA/////wAAAAAAAP///////////+8AAP//AAD/7////////wAAAAD//wAAAAD//wAA///////7/////wAA//sAAP8D//8AAP///wMAAAAA"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("6_08xfw"),
+"name": "bookshelf material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAP//AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIAAAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD//////////////3////9/////f////3///////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rd5ey")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tq2wg"]
 size = Vector3(3, 6, 0.25)
@@ -29,6 +65,7 @@ size = Vector3(9, 0.1, 9)
 size = Vector3(5, 0.1, 4.5)
 
 [node name="Room" type="Node3D"]
+script = ExtResource("1_5fqy3")
 
 [node name="Switch" parent="." node_paths=PackedStringArray("light_source") instance=ExtResource("1_8v3wb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.94, 1.5, -1.25)
@@ -36,23 +73,32 @@ light_source = NodePath("../ceiling_light_warm")
 
 [node name="door_left" parent="." node_paths=PackedStringArray("pivot") instance=ExtResource("2_ec1s5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-openable = true
 pivot = NodePath("../left_pivot")
 
 [node name="door_right" parent="." node_paths=PackedStringArray("pivot") instance=ExtResource("2_ec1s5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4)
-openable = true
 pivot = NodePath("../right_pivot")
 
 [node name="Desk" parent="." instance=ExtResource("3_8ctc8")]
 
-[node name="door_entrance" parent="." node_paths=PackedStringArray("own_collider") instance=ExtResource("4_li1gv")]
+[node name="door_entrance" type="Node3D" parent="." node_paths=PackedStringArray("own_collider")]
 transform = Transform3D(5.96244e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.96244e-09, 4, 0, 0)
 script = ExtResource("5_pewy4")
 own_collider = NodePath("door_collider/CollisionShape3D")
 
-[node name="door_collider" type="StaticBody3D" parent="door_entrance"]
+[node name="Door" type="MeshInstance3D" parent="door_entrance"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+mesh = SubResource("ArrayMesh_itsvw")
+skeleton = NodePath("")
+
+[node name="door_collider" type="StaticBody3D" parent="door_entrance" node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("7_08xfw")
+mesh = NodePath("../Door")
+highlight_mat = ExtResource("8_0tv2a")
+default_mat = ExtResource("6_08xfw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_entrance/door_collider"]
 shape = SubResource("BoxShape3D_tq2wg")
@@ -62,6 +108,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58546e-08, 3, 2.16812)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_entrance/door_area"]
 shape = SubResource("BoxShape3D_h5b67")
+
+[node name="door_audio" type="AudioStreamPlayer3D" parent="door_entrance/door_area"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -2.168)
+stream = ExtResource("6_03u2k")
 
 [node name="painting_1" parent="." instance=ExtResource("3_mfc4c")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.4, 2.5, -3.94)
@@ -177,4 +227,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [connection signal="body_entered" from="door_entrance/door_area" to="door_entrance" method="_on_door_area_body_entered"]
-[connection signal="body_exited" from="door_entrance/door_area" to="door_entrance" method="_on_door_area_body_exited"]

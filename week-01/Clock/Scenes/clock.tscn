@@ -183,7 +183,6 @@ mesh = SubResource("ArrayMesh_7cgjr")
 skeleton = NodePath("")
 
 [node name="hour_pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="hour hand2" type="MeshInstance3D" parent="hour_pivot"]
 transform = Transform3D(0.117, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0.02, -0.45)

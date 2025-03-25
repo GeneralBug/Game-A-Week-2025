@@ -1,18 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqe8docy4as57"]
+[gd_scene load_steps=8 format=4 uid="uid://cqe8docy4as57"]
 
 [ext_resource type="Script" uid="uid://bup7sjdhvknpt" path="res://Scripts/interactable_switch.gd" id="1_6lexl"]
-[ext_resource type="PackedScene" uid="uid://bjbb2ht07d8g" path="res://Models/light_switch_1.glb" id="1_8r0at"]
+[ext_resource type="Material" uid="uid://c5bcyuv6yk2cn" path="res://Materials/interactable_switch_highlight.material" id="2_s7rg7"]
+[ext_resource type="AudioStream" uid="uid://dd13csk3vgjfq" path="res://Audio/light click.wav" id="3_3203k"]
+[ext_resource type="Material" uid="uid://bnlmcltavrpe6" path="res://Materials/interactable_switch.material" id="3_qilo4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqax5"]
 size = Vector3(0.24, 0.24, 0.12)
 
-[node name="switch_body" type="StaticBody3D"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0jvr0"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -4.37114e-08, 2, 2, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "bookshelf material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAgL8uvTuzAACAPwAAgD8uvTszAACAPwAAgL8uvTuzAACAvwAAgD8uvTsz")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_letra"]
+resource_name = "light_switch_1_Plane_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -4.37114e-08, 2, 2, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("3_qilo4"),
+"name": "bookshelf material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAgL8uvTuzAACAPwAAgD8uvTszAACAPwAAgL8uvTuzAACAvwAAgD8uvTsz/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0jvr0")
+
+[node name="switch_body" type="StaticBody3D" node_paths=PackedStringArray("mesh")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_6lexl")
+mesh = NodePath("switch_model")
+highlight_mat = ExtResource("2_s7rg7")
+default_mat = ExtResource("3_qilo4")
 
 [node name="switch_collider" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_gqax5")
 
-[node name="switch_model" parent="." instance=ExtResource("1_8r0at")]
+[node name="switch_model" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0, 0, 0)
+mesh = SubResource("ArrayMesh_letra")
+skeleton = NodePath("")
+
+[node name="click" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3203k")
