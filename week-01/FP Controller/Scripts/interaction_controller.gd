@@ -5,9 +5,9 @@ var last_collider: Object = null
 func _physics_process(delta: float) -> void:
 	if is_colliding():
 		var target = get_collider()
-		print(target.name)
+		#print(target.name)
 		if target is InteractableObject:
-			print(target.mesh)
+			#print(target.mesh)
 			target.mesh.material_override = target.highlight_mat
 			last_collider = target
 			if Input.is_action_just_pressed("interact"):

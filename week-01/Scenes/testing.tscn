@@ -22,6 +22,7 @@ volumetric_fog_density = 1.0
 
 [node name="Scene Controller" type="Node" parent="." node_paths=PackedStringArray("rooms")]
 script = ExtResource("1_ufsgb")
+computer_words = Array[String](["You need to leave.", "Why are you still here?", "Get out.", "This is serious.", "You have to leave.", "Get out.", "Why are you ignoring me?", "Hello?", "You shouldn't be here.", "Please.", "Can you even hear me?", "Why are you doing this?", "There's nothing for you here.", "Get out.", "Get out.", "Get Out.", "Get out", "please", "", "", "I can't help you.", "I can't hear you.", "Why?", "What is happening?", "Hello?", "", "I don't understand.", "Please.", "There's nothing for us here.", ""])
 rooms = [NodePath("Room")]
 room_offset = 8.0
 

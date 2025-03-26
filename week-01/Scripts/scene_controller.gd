@@ -18,7 +18,9 @@ func build_room(pivot: Node3D):
 	var new_room = room_prefab.instantiate()
 	var offset_direction = 1.0
 	add_child(new_room)
-	
+	if count >= computer_words.size():
+		count = 1
+	new_room.update_text(computer_words[count - 1])
 	#set transform
 	match pivot.position:
 		Vector3(0, 0, -8): #left door
